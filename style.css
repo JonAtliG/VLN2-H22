@@ -1,9 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .navbar {
-    padding: 60px;
+    display: flex;
+    height: 100px;
     text-align: center;
     background: aquamarine;
     color: white;
-    font-size: 30px;
+    font-size: 2rem;
+}
+
+.nav_options {
+    display: flex;
+    height: 100px;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+}
+
+.nav_link {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    padding: 5rem;
+    color: white;
+}
+
+.nav_link:hover {
+    color: blue;
+    background-color: brown;
+    transition: all 0.2s ease;
 }
 
 #Menu{
