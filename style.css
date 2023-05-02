@@ -10,14 +10,20 @@
     background: aquamarine;
     color: white;
     font-size: 2rem;
+    position: sticky;
 }
 
 .nav_options {
     display: flex;
+    flex-direction: row;
     height: 100px;
     align-items: center;
     list-style: none;
     text-align: center;
+}
+
+#nav_img {
+    max-width: 100px;
 }
 
 .nav_link {
