@@ -68,12 +68,17 @@ body {
     width: 500px;
     height: 300px;
     background-color: #53354A;
+    border-radius: 15px;
 
     /*price and description*/
 
 }
 
 .pizza img {
-    width: 100px;
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+    float: left;
+    margin: 15px;
 }
 
