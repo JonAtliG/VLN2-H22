@@ -50,3 +50,22 @@
     background-color: brown;
     transition: all 0.2s ease;
 }
+
+.pizza_list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: purple;
+    list-style: none;
+    padding: 1px;
+}
+
+.pizza {
+    margin: 1rem;
+    max-width: 500px;
+    background-color: red;
+}
+
+.pizza img {
+    width: 100px;
+}
