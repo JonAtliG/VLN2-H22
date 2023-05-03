@@ -58,17 +58,22 @@ body {
 .pizza_list {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    list-style: none;
-    padding: 1px;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: stretch;
 }
 
 .pizza {
     margin: 1rem;
-    max-width: 500px;
-    background-color: red;
+    width: 500px;
+    height: 300px;
+    background-color: #53354A;
+
+    /*price and description*/
+
 }
 
 .pizza img {
     width: 100px;
 }
+
