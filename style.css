@@ -70,13 +70,14 @@ body {
     width: 500px;
     height: 300px;
     background-color: #53354A;
-
+    border-radius: 15px;
     /*price and description*/
 
 }
 
 .pizza img {
     width: 100px;
+    margin-left: 5px;
 }
 
 .Cart{
