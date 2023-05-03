@@ -40,14 +40,14 @@ body {
     }
 }
 .nav_link {
+    padding: 10px;
     display: flex;
     text-decoration: none;
     color: white;
 }
 
 .nav_link:hover {
-    padding: 10px;
-    border-radius: 25px;
+    border-radius: 15px;
     color: blue;
     background-color: brown;
     transition: all 0.2s ease;
