@@ -159,6 +159,30 @@ body {
     border-radius: 15px;
 
 }
+#email{
+    width: 500px;
+    padding: 25px;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    margin: 50px;
+    font-size: 45px;
+    border-radius: 15px;
+    margin-left: 40%;
+}
+
+#create_acc_butt{
+    width: 200px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: green;
+    margin: 50px;
+    font-size: 30px;
+    border-radius: 15px;
+    margin-left: 60%;
+}
+
 /*
 #create_account{
     margin-left: 45%;
