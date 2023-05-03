@@ -12,6 +12,9 @@ body {
     height: 80px;
     background: aquamarine;
     font-size: 2rem;
+    position: fixed;
+    width: 100%;
+    position: sticky;
 }
 
 .nav_items {
@@ -54,17 +57,47 @@ body {
 .pizza_list {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    background-color: purple;
-    padding: 1px;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: stretch;
 }
 
 .pizza {
     margin: 1rem;
-    max-width: 500px;
-    background-color: red;
+    width: 500px;
+    height: 300px;
+    background-color: #53354A;
+    border-radius: 15px;
+
+    /*price and description*/
+
 }
 
 .pizza img {
-    width: 100px;
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+    float: left;
+    margin: 15px;
+}
+
+.Cart{
+    margin-top: 10%;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    background-color: red;
+    border-radius: 15px;
+    
+}
+
+#Cart_text{
+    font-size: 50px;
+}
+
+#img_test{
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+    width: 15%;
+    height: 15%;
 }
