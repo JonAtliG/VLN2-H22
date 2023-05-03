@@ -1,4 +1,5 @@
 * {
+    list-style: none;
     margin: 0;
     padding: 0;
 }
@@ -8,31 +9,28 @@ body {
 }
 
 .navbar {
-    display: flex;
-    height: 100px;
-    text-align: center;
-    background: #E84545;
-    color: white;
+    height: 80px;
+    background: aquamarine;
     font-size: 2rem;
     position: fixed;
     width: 100%;
     position: sticky;
     top: 0;
-    z-index: 1030;
+    z-index: 1300;
 }
 
-.nav_options {
+.nav_items {
     display: flex;
-    flex-direction: row;
-    height: 100px;
+    padding: 0 2rem 0 2rem;
+    height: 80px;
     align-items: center;
-    list-style: none;
-    text-align: center;
+    justify-content: space-between;
+    background-color: #E84545;
 }
 
 #nav_img {
     max-width: 100px;
-    animation: rotation 0.2s infinite linear;
+    /*animation: rotation 0.2s infinite linear;*/
 }
 
 @keyframes rotation {
@@ -44,18 +42,19 @@ body {
     }
 }
 .nav_link {
+    padding: 10px;
     display: flex;
-    justify-content: center;
     text-decoration: none;
-    padding: 5rem;
     color: white;
 }
 
 .nav_link:hover {
+    border-radius: 15px;
     color: blue;
     background-color: brown;
     transition: all 0.2s ease;
 }
+
 
 .pizza_list {
     display: flex;
