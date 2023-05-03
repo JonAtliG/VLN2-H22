@@ -17,6 +17,8 @@ body {
     position: fixed;
     width: 100%;
     position: sticky;
+    top: 0;
+    z-index: 1030;
 }
 
 .nav_options {
@@ -82,3 +84,23 @@ body {
     margin: 15px;
 }
 
+.Cart{
+    margin-top: 10%;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    background-color: red;
+    border-radius: 15px;
+    
+}
+
+#Cart_text{
+    font-size: 50px;
+}
+
+#img_test{
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+    width: 15%;
+    height: 15%;
+}
