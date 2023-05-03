@@ -26,8 +26,17 @@
 
 #nav_img {
     max-width: 100px;
+    animation: rotation 0.2s infinite linear;
 }
 
+@keyframes rotation {
+    form {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
 .nav_link {
     display: flex;
     justify-content: center;
