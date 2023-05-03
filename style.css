@@ -187,6 +187,17 @@ body {
     border-radius: 15px;
     margin-left: 60%;
 }
+#login_log{
+    width: 200px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: gray;
+    margin: 50px;
+    font-size: 30px;
+    border-radius: 15px;
+    margin-left: 60%;
+}
 
 /*
 #create_account{
