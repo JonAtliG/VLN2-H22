@@ -85,7 +85,7 @@ body {
     text-decoration: none;
     color: white;
 }
-.pizza_list {
+.menu_list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
