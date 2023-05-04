@@ -55,7 +55,36 @@ body {
     transition: all 0.2s ease;
 }
 
+.menunav {
+    height: 100px;
+    position: fixed;
+    position: sticky;
+}
 
+.menu_groups {
+    display: flex;
+    padding: 0 2rem 0 2rem;
+    height: 80px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu_link {
+    background-color: #53354A;
+    font-family: "Inter";
+    font-size: 42px ;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+}
+.menu_link2 {
+    background-color: #53354A;
+    border-radius: 10px;
+    font-family: "Inter";
+    font-size: 42px ;
+    text-decoration: none;
+    color: white;
+}
 .pizza_list {
     display: flex;
     flex-direction: row;
@@ -128,7 +157,16 @@ body {
     float: bottom;
 }
 
+.drink {
+    margin: 1rem;
+    width: 600px;
+    height: 300px;
+    background-color: #53354A;
+    border-radius: 15px;
+    position: relative
+}
 
+/* cart */
 .Cart{
     margin-top: 10%;
     margin-left: 25%;
