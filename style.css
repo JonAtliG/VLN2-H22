@@ -281,18 +281,27 @@ body {
     border-radius: 15px;
 
 }
+/* Create Account html */
+.email_n_pass{
+    width: 20%;
+    padding: 5%;
+    background-color: blue;
+    margin-left: 10%;
+    margin-top: 15%;
+    border-radius: 15px;
+
+}
 #email{
-    width: 500px;
-    padding: 25px;
+    width: 70%;
+    height: 10%;
     display: flex;
     flex-direction: row;
     background-color: white;
-    margin: 50px;
     font-size: 45px;
     border-radius: 15px;
-    margin-left: 40%;
+    margin-left: 5%;
+    margin-top: 5%;
 }
-
 #create_acc_butt{
     width: 200px;
     padding: 10px;
@@ -304,6 +313,7 @@ body {
     border-radius: 15px;
     margin-left: 60%;
 }
+/* Login html*/
 #login_log{
     width: 200px;
     padding: 10px;
@@ -315,12 +325,3 @@ body {
     border-radius: 15px;
     margin-left: 60%;
 }
-
-/*
-#create_account{
-    margin-left: 45%;
-    display: flex;
-    flex-direction: row;
-    width: 10%;
-}
-*/
