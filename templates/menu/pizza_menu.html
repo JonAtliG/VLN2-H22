@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sewer Pizza</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+    {% include 'navigation.html' %}
+    {% include 'menu/menu_navigation.html' %}
+
+    <div class="pizza_menu">
+        <div class="pizza_list_container">
+            <div class="title">
+                <h1>Pizzas</h1>
+                </div>
+            <ul class="menu_list">
+
+                <li class="menuitem">
+                    <p id="menuName">Seweroni Pizza</p>
+                    <img src="/images/SeweroniPizza.png" alt="">
+                    <p id="itemDescription">Pepperoni, Cheese, Pizza Sauce</p>
+                    <button id="addToCart">
+                        <img src="/images/CartPhoto.png">
+                        </button>
+                    <p id="price">17.99$</p>
+                </li>
+
+                <li class="menuitem">
+                    <p id="menuName">Hawaian Sewer</p>
+                    <img src="/images/Hawaian Sewer.png" alt="">
+                    <p id="itemDescription">Ham, Pineapple, Bacon, Cheese, Pizza Sauce</p>
+                    <button id="addToCart">
+                        <img src="/images/CartPhoto.png">
+                        </button>
+                    <p id="price">17.99$</p>
+                </li>
+
+                <li class="menuitem">
+                    <p id="menuName">Spicy Sewage</p>
+                    <img src="/images/SpicySewage.png" alt="">
+                    <p id="itemDescription">Jalapeno, Paprika, Mushrooms, Onion, Cheese, Pizza Sauce</p>
+                    <button id="addToCart">
+                        <img src="/images/CartPhoto.png">
+                        </button>
+                    <p id="price">18.99$</p>
+                </li>
+
+                <li class="menuitem">
+                    <p id="menuName">Sewage Saucy</p>
+                    <img src="/images/SewageSaucy.png" alt="">
+                    <p id="itemDescription">Cheese, Pizza sauce</p>
+                    <button id="addToCart">
+                        <img src="/images/CartPhoto.png">
+                        </button>
+                    <p id="price">11.99$</p>
+                </li>
+
+                <li class="menuitem">
+                    <p id="menuName">Cheesy Manhole</p>
+                    <img src="/images/CheesyManhole.png" alt="">
+                    <p id="itemDescription">Yellow Cheese, Mozzarella, Pepper Cheese, Pizza Sauce</p>
+                    <button id="addToCart">
+                        <img src="/images/CartPhoto.png">
+                        </button>
+                    <p id="price">18.99$</p> 
+                </li>
+
+                <li class="menuitem">
+                    <p id="menuName">Shroomy Sewage Magic Sewshrooms</p>
+                    <img src="/images/ShroomySewage.png" alt="">
+                    <p id="itemDescription">Mushrooms, Chicken, Pepper Cheese, Yellow Cheese, Pizza sauce</p>
+                    <button id="addToCart">
+                        <img src="/images/CartPhoto.png">
+                        </button>
+                    <p id="price">19.99$</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

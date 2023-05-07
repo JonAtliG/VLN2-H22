@@ -1,0 +1,22 @@
+{% load static %}
+<nav class = "navbar">
+    <ul class="nav_items">
+        <li class="nav_item">
+            <a href="{% url 'home-index' %}" class="nav_link">
+                <img id="nav_img" src="{% static '/img/pizza logo.png' %}" alt="">
+            </a>
+        </li>
+        <li class="nav_item">
+            <a href="{% url 'menu-index' %}" class="nav_link">Menu</a>
+        </li>
+        <li class="nav_item">
+            <a href="{% url 'offers-index' %}" class="nav_link">Special Offers</a>
+        </li>
+        <li class="nav_item">
+            <a href="{% url 'cart-index' %}" class="nav_link">Cart</a>
+        </li>
+        <li class="nav_item">
+            <a href="{% url 'account-index' %}" class="nav_link">Account</a>
+        </li>
+    </ul>
+</nav>

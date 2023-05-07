@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sewer Pizza</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+    {% include 'navigation.html' %}
+    {% include 'menu/menu_navigation.html' %}
+
+    <div class="side_menu">
+        <div class="side_list_container">
+            <div class="title">
+                <h1>Sewer Sides</h1>
+                </div>
+            <ul class="menu_list">
+
+                <li class="menuitem">
+                    <p id="menuName">Sewer Sticks</p>
+                    <img src="/images/SewerSticks.png" alt="">
+                    <p id="itemDescription">Sewer sticks poured in our legendary sewery oil</p>
+                    <button id="addToCart">
+                        <img src="/images/CartPhoto.png">
+                        </button>
+                    <p id="price">6.99$</p>
+                </li>
+
+                <li class="menuitem">
+                    <p id="menuName">Sewer Cheesy Sticks</p>
+                    <img src="/images/SewerCheesySticks.png" alt="">
+                    <p id="itemDescription">Sewer sticks with delicious cheese  in the middle  poured with our legendary sewery oil.</p>
+                    <button id="addToCart">
+                        <img src="/images/CartPhoto.png">
+                        </button>
+                    <p id="price">8.99$</p>
+                </li>
+
+                <li class="menuitem">
+                    <p id="menuName">Spicy Sewer Bread</p>
+                    <img src="/images/SpicySewerBread.png" alt="">
+                    <p id="itemDescription">Our cheesy bread  topped with our wide collection of sewer spices</p>
+                    <button id="addToCart">
+                        <img src="/images/CartPhoto.png">
+                        </button>
+                    <p id="price">9.99$</p>
+                </li>
+
+                <li class="menuitem">
+                    <p id="menuName">Chocolaty Calzone</p>
+                    <img src="/images/ChocolatyCalzone.png" alt="">
+                    <p id="itemDescription">A calzone filled with chocolate and bit of caramel smeared with our legendary sewery oil.</p>
+                    <button id="addToCart">
+                        <img src="/images/CartPhoto.png">
+                        </button>
+                    <p id="price">12.99$</p>
+                </li>
+ </body>
+</html>
