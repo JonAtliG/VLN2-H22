@@ -19,66 +19,17 @@
                 <h1>Pizzas</h1>
                 </div>
             <ul class="menu_list">
-
-                <li class="menuitem">
-                    <p id="menuName">Seweroni Pizza</p>
-                    <img src="/images/SeweroniPizza.png" alt="">
-                    <p id="itemDescription">Pepperoni, Cheese, Pizza Sauce</p>
-                    <button id="addToCart">
-                        <img src="/images/CartPhoto.png">
-                        </button>
-                    <p id="price">17.99$</p>
-                </li>
-
-                <li class="menuitem">
-                    <p id="menuName">Hawaian Sewer</p>
-                    <img src="/images/Hawaian Sewer.png" alt="">
-                    <p id="itemDescription">Ham, Pineapple, Bacon, Cheese, Pizza Sauce</p>
-                    <button id="addToCart">
-                        <img src="/images/CartPhoto.png">
-                        </button>
-                    <p id="price">17.99$</p>
-                </li>
-
-                <li class="menuitem">
-                    <p id="menuName">Spicy Sewage</p>
-                    <img src="/images/SpicySewage.png" alt="">
-                    <p id="itemDescription">Jalapeno, Paprika, Mushrooms, Onion, Cheese, Pizza Sauce</p>
-                    <button id="addToCart">
-                        <img src="/images/CartPhoto.png">
-                        </button>
-                    <p id="price">18.99$</p>
-                </li>
-
-                <li class="menuitem">
-                    <p id="menuName">Sewage Saucy</p>
-                    <img src="/images/SewageSaucy.png" alt="">
-                    <p id="itemDescription">Cheese, Pizza sauce</p>
-                    <button id="addToCart">
-                        <img src="/images/CartPhoto.png">
-                        </button>
-                    <p id="price">11.99$</p>
-                </li>
-
-                <li class="menuitem">
-                    <p id="menuName">Cheesy Manhole</p>
-                    <img src="/images/CheesyManhole.png" alt="">
-                    <p id="itemDescription">Yellow Cheese, Mozzarella, Pepper Cheese, Pizza Sauce</p>
-                    <button id="addToCart">
-                        <img src="/images/CartPhoto.png">
-                        </button>
-                    <p id="price">18.99$</p> 
-                </li>
-
-                <li class="menuitem">
-                    <p id="menuName">Shroomy Sewage Magic Sewshrooms</p>
-                    <img src="/images/ShroomySewage.png" alt="">
-                    <p id="itemDescription">Mushrooms, Chicken, Pepper Cheese, Yellow Cheese, Pizza sauce</p>
-                    <button id="addToCart">
-                        <img src="/images/CartPhoto.png">
-                        </button>
-                    <p id="price">19.99$</p>
-                </li>
+                {% for pizza in pizzas %}
+                    <li class="menuitem">
+                        <p id="menuName">{{ pizza.name }}</p>
+                        <img src={{ pizza.img }} alt="">
+                        <p id="itemDescription">{{pizza.desc}}</p>
+                        <button id="addToCart">
+                            <img src="{% static '/img/CartPhoto.png' %}">
+                            </button>
+                        <p id="price">{{ pizza.price }}$</p>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
     </div>
