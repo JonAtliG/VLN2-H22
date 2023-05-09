@@ -1,19 +1,8 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sewer Pizza</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-</head>
-<body>
-    {% include 'navigation.html' %}
+{% block content %}
     <div class = 'Cart'>
         <img src="/images/new-york-style-pizza-and-subs.png" id = 'img_test' alt="">
         <p id='Cart_text'>Your Cart</p>
     </div>
-</body>
-</html>
+{% endblock %}
