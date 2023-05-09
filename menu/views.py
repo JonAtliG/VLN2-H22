@@ -57,7 +57,7 @@ def sides_index(request):
 
 def create_pizza(request):
     if request.method == 'POST':
-        print(1)
+        form = create_pizza(data=request.POST)
     else:
         form = PizzaCreateForm()
     return render(request, 'pizza/create_pizza.html', {
