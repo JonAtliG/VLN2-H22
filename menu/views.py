@@ -54,3 +54,13 @@ def drink_index(request):
 
 def sides_index(request):
     return render(request, 'menu/side_menu.html')
+
+def create_pizza(request):
+    if request.method == 'POST':
+        print(1)
+    else:
+        print(2)
+        #TODO: instance new pizzacreateform()
+    return render(request, 'pizza/create_pizza.html', {
+        'form': form
+})
