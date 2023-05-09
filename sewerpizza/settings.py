@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import os
+from os import path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-vp_^iog0x35bnph&42v!+tn0bnu7ptfgc))kjt6_05cc!f2r#z'
+SECRET_KEY = 'django-insecure-oaw8^hot2#&(#=_uh^0jupl9!&n#t4+o%qz*%v(m3*s!^1(9$='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -60,7 +60,8 @@ ROOT_URLCONF = 'sewerpizza.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [BASE_DIR / 'templates']
+        ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,7 +124,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    path.join(BASE_DIR, 'static')
 ]
 
 # Default primary key field type
