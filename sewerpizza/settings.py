@@ -82,8 +82,13 @@ WSGI_APPLICATION = 'sewerpizza.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pizzadb',
+        'USER': 'pizzadb-user',
+        'PASSWORD': 'sewer123',
+        'HOST': '34.88.236.130',
+        'PORT': '5432',
+
     }
 }
 
