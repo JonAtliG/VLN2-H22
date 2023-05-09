@@ -46,6 +46,33 @@ pizzas = [
     },
 ]
 
+sides = [
+    {
+        'name': 'Sewer Sticks',
+        'img': '/static/img/SewerSticks.png',
+        'desc': 'Sewer sticks poured in our legendary sewery oil',
+        'price': 6.99
+    },
+    {
+        'name': 'Sewer Cheesy Sticks',
+        'img': '/static/img/SewerCheesySticks.png',
+        'desc': 'Sewer sticks with delicious cheese  in the middle  poured with our legendary sewery oil.',
+        'price': 8.99
+    },
+    {
+        'name': 'Spicy Sewer Bread',
+        'img': '/static/img/SpicySewerBread.png',
+        'desc': 'Our cheesy bread  topped with our wide collection of sewer spices',
+        'price': 9.99
+    },
+    {
+        'name': 'Chocolaty Calzone',
+        'img': '/static/img/ChocolatyCalzone.png',
+        'desc': 'A calzone filled with chocolate and bit of caramel smeared with our legendary sewery oil.',
+        'price': 12.99
+    },
+]
+
 def menu_index(request):
     return render(request, 'menu/pizza_menu.html', context={'pizzas': pizzas})
 
@@ -53,7 +80,7 @@ def drink_index(request):
     return render(request, 'menu/drink_menu.html')
 
 def sides_index(request):
-    return render(request, 'menu/side_menu.html')
+    return render(request, 'menu/side_menu.html', context={'sides': sides})
 
 def create_pizza(request):
     if request.method == 'POST':
