@@ -8,7 +8,7 @@ class Pizza(models.Model):
     img = models.CharField(max_length=9999, blank=True)
 
 class OnPizza(models.Model):
-
+    pizza = models.ForeignKey(Pizza.name)
 
 class Topping(models.Model):
     name = models.CharField(max_length=255)
