@@ -59,8 +59,7 @@ def create_pizza(request):
     if request.method == 'POST':
         print(1)
     else:
-        print(2)
-        #TODO: instance new pizzacreateform()
+        form = PizzaCreateForm()
     return render(request, 'pizza/create_pizza.html', {
         'form': form
 })
