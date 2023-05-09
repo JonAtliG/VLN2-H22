@@ -8,3 +8,5 @@ env.bak/
 venv.bak/
 .idea
 .idea 2
+**/__pycache__
+__pycache__
