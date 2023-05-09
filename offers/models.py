@@ -7,10 +7,13 @@ class Pizza(models.Model):
     name = models.CharField(max_length=255)
     img = models.CharField(max_length=9999, blank=True)
 
+class OnPizza(models.Model):
+
 
 class Topping(models.Model):
     name = models.CharField(max_length=255)
     img = models.CharField(max_length=9999, blank=True)
+
 
 
 class Drinks(models.Model):
