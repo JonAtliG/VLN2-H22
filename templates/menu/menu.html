@@ -15,6 +15,17 @@
         <div class="pizza_list_container">
             <h1>Pizzas</h1>
             <ul class="pizza_list">
+                {% for pizza in pizzas %}
+                    <li class="pizza">
+                        <p id="menuName">{{ pizza.name }}</p>
+                        <img src={{ pizza.img }} alt="">
+                        <p id="itemDescription">{{pizza.desc}}</p>
+                        <button id="addToCart">
+                            <img src="{% static '/img/CartPhoto.png' %}">
+                            </button>
+                        <p id="price">{{ pizza.price }}$</p>
+                    </li>
+                {% endfor %}
 
                 <li class="pizza">
                     <p id="menuName">Seweroni Pizza</p>
@@ -63,7 +74,7 @@
                     <button id="addToCart">
                         <img src="/images/CartPhoto.png">
                         </button>
-                    <p id="price">18.99$</p> 
+                    <p id="price">18.99$</p>
                 </li>
 
                 <li class="pizza">
