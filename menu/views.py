@@ -3,12 +3,6 @@ from django.shortcuts import render
 # Create your views here.
 pizzas = [
     {
-        'name': 'Seweroni Pizza',
-        'img': "/static/img/SeweroniPizza.png",
-        'desc': 'Pepperoni, Cheese, Pizza Sauce',
-        'price': 17.99,
-    },
-    {
         'name': "Seweroni Pizza",
         'img': "/static/img/SeweroniPizza.png",
         'desc': "Pepperoni, Cheese, Pizza Sauce",
