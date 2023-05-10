@@ -1,23 +1,29 @@
 from django.db import models
 from dbview.models import DbView
+from rest_framework import serializers
 
 
 # Create your models here.
 
-class topping_type(models.Model):
-    name = models.CharField(max_length=255)
-
-
-class topping(models.Model):
-    name = models.CharField(max_length=255)
-    #img = models.CharField(max_length=9999, blank=True)
-    type = models.ForeignKey(topping_type, on_delete=models.CASCADE)
-
-
-class pizza(models.Model):
+class Pizza(models.Model):
     name = models.CharField(max_length=255)
     img = models.CharField(max_length=9999, blank=True)
-    toppings = models.ManyToManyField(topping)
+    Bacon = models.BooleanField(default=False)
+    Chicken = models.BooleanField(default=False)
+    Ham = models.BooleanField(default=False)
+    Pepperoni = models.BooleanField(default=False)
+    Jalapeno = models.BooleanField(default=False)
+    Mushrooms = models.BooleanField(default=False)
+    Onion = models.BooleanField(default=False)
+    Paprika = models.BooleanField(default=False)
+    Pineapple = models.BooleanField(default=False)
+    Cheese = models.BooleanField(default=False)
+    Mozzarella = models.BooleanField(default=False)
+    Pepper_Cheese = models.BooleanField(default=False)
+    Yellow_Cheese = models.BooleanField(default=False)
+    Pizza_Sauce = models.BooleanField(default=False)
+
+
 
 
 
