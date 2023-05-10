@@ -11,21 +11,15 @@
 </head>
 <body>
     {% include 'navigation.html' %}
+    <div class ='create_acc_body'>
     {% block content %}
         <h1>Create Account</h1>
-        <form class="form form-horizontal" method="post">
+        <form id="account_form" class="form form-horizontal" method="post">
         {% csrf_token %}
-        {{ form }}
-        <input type="submit" class="btn btn-primary" value="Sign up bitch">
+        {{ form.as_p}}
+        <input type="submit" class="btn btn-primary" value="Sign up bitch" id =create_acc_button>
         </form>
     {% endblock %}
-    <!-- <div class="create_acc_details">
-        <input type="text" id = 'email' placeholder="Email">
-        <input type="password" id = 'email' placeholder="Password">
-        <input type="password" id = 'email' placeholder="Repeat Password">
-        <a href="">
-        <button id = 'create_acc_butt'>Create Account</button>
-        </a>
-    </div> -->
+    </div>
 </body>
 </html>
