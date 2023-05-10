@@ -2,7 +2,7 @@
     <ul class="menu_groups">
         <li class="menu_groups">
             <li class = "menu_group">
-                <a href="{% url 'menu-index' %}" class ="menu_link">Pizzas</a>
+                <a href="{% url 'pizza-menu-index' %}" class ="menu_link">Pizzas</a>
             </li>
             <li class = "menu_group">
                 <a href="/saved_pizzas.html" class ="menu_link">Saved Pizzas</a>
@@ -15,10 +15,7 @@
                 <a href="{% url 'drink-index' %}" class ="menu_link2">Drinks</a>
             </li>
             <li class = "menu_group">
-                <a href="{% url 'pizza-menu-index' %}" class ="menu_link">Past Orders</a>
-            </li>
-            <li class = "menu_group">
-                <a href="/create_custom_pizza.html" class ="menu_link">Create a custom pizza</a>
+                <a href="{% url 'create-pizza-index' %}" class ="menu_link">Create a custom pizza</a>
             </li>
         </li>
     </ul>

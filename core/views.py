@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from core.models import Pizza
+from core.models import PizzaMenu
 from django.http import HttpResponse
+from core.forms.pizza_form import PizzaCreateForm
 
 
 # Create your views here.
@@ -16,6 +18,15 @@ def account_create_index(request):
 
 def offers_index(request):
     return render(request, 'special_offer.html')
+
+def create_pizza(request):
+    if request.method == 'POST':
+        print(1)
+    else:
+        form = PizzaCreateForm()
+    return render(request, 'menu/create_pizza.html', {
+        'form': form
+    })
 
 def pizza_menu_index(request):
     pizzalist = []

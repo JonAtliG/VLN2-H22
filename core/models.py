@@ -1,12 +1,17 @@
 from django.db import models
 from dbview.models import DbView
+from django.contrib.auth.models import User as BaseUserClass
 
 
 # Create your models here.
+class User(BaseUserClass):
+    Phone_Number = models.IntegerField(blank=False)
+
 
 class Pizza(models.Model):
+    User = models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
-    img = models.CharField(max_length=9999, blank=True)
+    img = models.CharField(max_length=999, blank=True)
     Bacon = models.BooleanField(default=False)
     Chicken = models.BooleanField(default=False)
     Ham = models.BooleanField(default=False)
@@ -23,29 +28,32 @@ class Pizza(models.Model):
     Pizza_Sauce = models.BooleanField(default=False)
 
 
+class Side(models.Model):
+    name = models.CharField(max_length=255)
+    img = models.CharField(max_length=999, blank=True)
+    desc = models.CharField(max_length=999, blank=True)
+    price = models.FloatField()
 
 
+class Drink(models.Model):
+    name = models.CharField(max_length=255)
+    img = models.CharField(max_length=999, blank=True)
+    desc = models.CharField(max_length=999, blank=True)
+    price = models.FloatField()
 
 
-#class pizza_view(DbView):
-#    @classmethod
-#    def get_view_str(cls):
-#        return """
-#        create view pizza_view as (
-#        select * from offers_pizza p
-#        join offers_on_pizza o on o.pizza_id = p.id
-#        join offers_topping t on o.topping_id = t.id
-#        )"""
+class PizzaMenu:
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
 
-#class Drinks(models.Model):
-#    name = models.CharField(max_length=255)
-#    img = models.CharField(max_length=9999, blank=True)
-#
-#
-#class Sides(models.Model):
-#    name = models.CharField(max_length=255)
-#    img = models.CharField(max_length=9999, blank=True)
-#
+
+class DrinkMenu:
+    drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
+
+
+class SideMenu:
+    drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
+
+
 #
 #class User(models.Model):
 #    name = models.CharField(max_length=255)
