@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from core.models import Pizza
-from django.core import serializers
 from django.http import HttpResponse
 
 
@@ -18,11 +17,26 @@ def account_create_index(request):
 def offers_index(request):
     return render(request, 'special_offer.html')
 
-def all_pizzas(request):
+def pizza_menu_index(request):
     pizzalist = []
     pizzas = Pizza.objects.all().values()
-    for pizza in pizzas:
-        pizzalist.append(pizza)
+    print(pizzas)
+    for i, pizza in enumerate(pizzas):
+        pizzalist.append({'id': pizza['id']})
+        pizzalist[i]['name'] = pizza['name']
+        pizzalist[i]['img'] = pizza['img']
+
+        toppings = []
+        for topping in pizza.keys():
+            if pizza[topping] is True:
+                toppings.append(topping.replace("_", " "))
+        print(toppings)
+        if len(toppings) > 1:
+            pizzalist[i]['desc'] = f"{', '.join(toppings[:-1])} and  {toppings[-1]}"
+        else:
+            pizzalist[i]['desc'] = "" if len(toppings) == 0 else toppings[1]
+        pizzalist[i]['price'] = round(10.99 + len(toppings), 2)
+
     return render(request, 'menu/pizza_menu.html', context={'pizzas': pizzalist})
 
 
