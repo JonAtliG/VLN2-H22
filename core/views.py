@@ -2,12 +2,9 @@ from django.shortcuts import render, redirect
 from core.models import Pizza
 from core.models import PizzaMenu
 from django.http import HttpResponse
-<<<<<<< HEAD
 from core.forms.pizza_form import PizzaCreateForm
-=======
 from django.contrib.auth.forms import UserCreationForm
 from .forms import Create_Account_Form
->>>>>>> ee08a9e3a7ec5893381bab8e23fa9d4a02ea5d77
 
 
 # Create your views here.
