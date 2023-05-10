@@ -56,6 +56,11 @@ class Address(models.Model):
     city = models.CharField(max_length=255)
 
 
+class UserAddress(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE())
+    address = models.ForeignKey(Address, on_delete=models.CASCADE())
+
+
 class CardInfo(models.Model):
     name = models.CharField(max_length=255)
     card_number = models.IntegerField()
