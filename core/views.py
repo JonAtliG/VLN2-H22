@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from core.models import Pizza
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
+from .forms import Create_Account_Form
 
 
 # Create your views here.
@@ -11,14 +12,15 @@ def account_index(request):
 def account_login_index(request):
     return render(request, 'account/login_screen.html')
 
+
 def account_create_index(request):
     if request.method == 'POST':
-        form = UserCreationForm(data=request.POST)
+        form = Create_Account_Form(data=request.POST)
         if form.is_valid():
             form.save()
             return redirect('login-index')
     return render(request, 'account/create_account.html', {
-        'form': UserCreationForm()
+        'form': Create_Account_Form()
     })
 
 
