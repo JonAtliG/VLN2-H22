@@ -11,12 +11,26 @@
 </head>
 <body>
     {% include 'navigation.html' %}
+    {% block content %}
+        <form method='post' class='form form-horizontal'>
+        {% csrf_token %}
+        {{ form }}
+        <input type='submit' class='btn btn-primary' value='login bitch'>
+        </form>
+    {% endblock %}
+
+
+
+
+
+
+    <!--
     <div class = login_details>
         <input type="text" id = 'email' placeholder="Email">
         <input type="password" id = 'email' placeholder="Password">
         <a href="">
         <button id = 'login_log'>Login</button>
         </a>
-    </div>
+    </div> -->
 </body>
 </html>
