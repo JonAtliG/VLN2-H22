@@ -1,12 +1,33 @@
 from django.shortcuts import render, redirect
 from core.models import Pizza
+from core.models import Side
+from core.models import Drink
 from core.forms.pizza_form import PizzaCreateForm
 from core.forms.user_form import Create_Account_Form
 
 
-# Create your views here.
+def __get_pizza_list(queryset):
+    pizza_list = []
+    for i, pizza in enumerate(queryset):
+        pizza_list.append({'id': pizza['id']})
+        pizza_list[i]['name'] = pizza['name']
+        pizza_list[i]['img'] = pizza['img']
+
+        toppings = []
+        for topping in pizza.keys():
+            if pizza[topping] is True:
+                toppings.append(topping.replace("_", " "))
+        if len(toppings) > 1:
+            pizza_list[i]['desc'] = f"{', '.join(toppings[:-1])} and  {toppings[-1]}"
+        else:
+            pizza_list[i]['desc'] = "" if len(toppings) == 0 else toppings[1]
+        pizza_list[i]['price'] = round(10.99 + len(toppings), 2)
+    return pizza_list
+
+
 def account_index(request):
     return render(request, 'account/account.html')
+
 
 def account_login_index(request):
     return render(request, 'account/login_screen.html')
@@ -26,132 +47,47 @@ def account_create_index(request):
 def offers_index(request):
     return render(request, 'special_offer.html')
 
+
 def create_pizza(request):
     if request.method == 'POST':
         print(1)
     else:
         form = PizzaCreateForm()
-    return render(request, 'menu/create_pizza.html', {
-        'form': form
-    })
+        return render(request, 'menu/create_pizza.html', {
+            'form': form
+        })
+
+
+def menu_index(request):
+    pizza_list = __get_pizza_list(Pizza.objects.all().filter(User__isnull=True).values())
+    side_object = Side.objects.all().values('name', 'img', 'desc', 'price')
+    drink_object = Drink.objects.all().values('name', 'img', 'desc', 'price')
+    return render(request, 'menu/pizza_menu.html', context={'data': {'pizzas': pizza_list,
+                                                                     'sides': side_object,
+                                                                     'drinks': drink_object}})
+
 
 def pizza_menu_index(request):
-    pizzalist = []
-    pizzas = Pizza.objects.all().values()
-    print(pizzas)
-    for i, pizza in enumerate(pizzas):
-        pizzalist.append({'id': pizza['id']})
-        pizzalist[i]['name'] = pizza['name']
-        pizzalist[i]['img'] = pizza['img']
-
-        toppings = []
-        for topping in pizza.keys():
-            if pizza[topping] is True:
-                toppings.append(topping.replace("_", " "))
-        print(toppings)
-        if len(toppings) > 1:
-            pizzalist[i]['desc'] = f"{', '.join(toppings[:-1])} and  {toppings[-1]}"
-        else:
-            pizzalist[i]['desc'] = "" if len(toppings) == 0 else toppings[1]
-        pizzalist[i]['price'] = round(10.99 + len(toppings), 2)
-
-    return render(request, 'menu/pizza_menu.html', context={'pizzas': pizzalist})
+    pizza_list = __get_pizza_list(Pizza.objects.all().filter(User__isnull=True).values())
+    return render(request, 'menu/pizza_menu.html', context={'data': {'pizzas': pizza_list}})
 
 
+def side_menu_index(request):
+    side_object = Side.objects.all().values('name', 'img', 'desc', 'price')
+    return render(request, 'menu/pizza_menu.html', context={'data': {'sides': side_object}})
 
-    #for p in pizzas:
-    #    topping_ids = on_pizza.objects.filter(pizza_id=p.id)
-#
-    #    pizza_list.append({
-    #        'name': p.name,
-    #        'img': p.img,
-    #        'desc': ""
-    #    })
-    #for i in pizza_list:
-    #    print(i)
-    #return render(request, 'special_offer.html', context={'pizzas': pizzas})
 
-# Create your views here.
-pizzas = [
-    {
-        'name': "Seweroni Pizza",
-        'img': "/static/img/SeweroniPizza.png",
-        'desc': "Pepperoni, Cheese, Pizza Sauce",
-        'price': 17.99
-    },
-    {
-        'name': "Hawaian Sewer",
-        'img': "/static/img/Hawaian%20Sewer.png",
-        'desc': "Ham, Pineapple, Bacon, Cheese, Pizza Sauce",
-        'price': 17.99
-    },
-    {
-        'name': "Spicy Sewage",
-        'img': "/static/img/SpicySewage.png",
-        'desc': "Jalapeno, Paprika, Mushrooms, Onion, Cheese, Pizza Sauce",
-        'price': 18.99
-    },
-    {
-        'name': "Sewage Saucy",
-        'img': "/static/img/SewageSaucy.png",
-        'desc': "Cheese, Pizza sauce",
-        'price': 11.99
-    },
-    {
-        'name': "Cheesy Manhole",
-        'img': "/static/img/CheesyManhole.png",
-        'desc': "Yellow Cheese, Mozzarella, Pepper Cheese, Pizza Sauce",
-        'price': 18.99
-    },
-    {
-        'name': "Shroomy Sewage Magic Sewshrooms",
-        'img': "/static/img/ShroomySewage.png",
-        'desc': "Mushrooms, Chicken, Pepper Cheese, Yellow Cheese, Pizza sauce",
-        'price': 19.99
-    },
-]
-
-sides = [
-    {
-        'name': 'Sewer Sticks',
-        'img': '/static/img/SewerSticks.png',
-        'desc': 'Sewer sticks poured in our legendary sewery oil',
-        'price': 6.99
-    },
-    {
-        'name': 'Sewer Cheesy Sticks',
-        'img': '/static/img/SewerCheesySticks.png',
-        'desc': 'Sewer sticks with delicious cheese  in the middle  poured with our legendary sewery oil.',
-        'price': 8.99
-    },
-    {
-        'name': 'Spicy Sewer Bread',
-        'img': '/static/img/SpicySewerBread.png',
-        'desc': 'Our cheesy bread  topped with our wide collection of sewer spices',
-        'price': 9.99
-    },
-    {
-        'name': 'Chocolaty Calzone',
-        'img': '/static/img/ChocolatyCalzone.png',
-        'desc': 'A calzone filled with chocolate and bit of caramel smeared with our legendary sewery oil.',
-        'price': 12.99
-    },
-]
+def drink_menu_index(request):
+    drink_object = Drink.objects.all().values('name', 'img', 'desc', 'price')
+    return render(request, 'menu/pizza_menu.html', context={'data': {'drinks': drink_object}})
 
 def cart_index(request):
     return render(request, 'cart.html')
 
+
 def home_index(request):
     return render(request, 'home.html')
 
-def menu_index(request):
-    return render(request, 'menu/pizza_menu.html', context={'pizzas': pizzas})
-
-def drink_index(request):
-    return render(request, 'menu/drink_menu.html')
-
-def sides_index(request):
-    return render(request, 'menu/side_menu.html', context={'sides': sides})
 
 #def create_pizza(request):
 #    if request.method == 'POST':
