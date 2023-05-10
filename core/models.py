@@ -9,7 +9,7 @@ class User(BaseUserClass):
 
 
 class Pizza(models.Model):
-    User = models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
+    User = models.ForeignKey(BaseUserClass, blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     img = models.CharField(max_length=999, blank=True)
     Bacon = models.BooleanField(default=False)
@@ -40,19 +40,6 @@ class Drink(models.Model):
     img = models.CharField(max_length=999, blank=True)
     desc = models.CharField(max_length=999, blank=True)
     price = models.FloatField()
-
-
-class PizzaMenu:
-    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
-
-
-class DrinkMenu:
-    drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
-
-
-class SideMenu:
-    drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
-
 
 #
 #class User(models.Model):
