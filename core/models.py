@@ -1,6 +1,5 @@
 from django.db import models
 from dbview.models import DbView
-from rest_framework import serializers
 
 
 # Create your models here.
