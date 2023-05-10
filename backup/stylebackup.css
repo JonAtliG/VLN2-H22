@@ -108,17 +108,18 @@ body {
 }
 
 #cartprogress{
-    margin-left: 1150px;
+    display: block;
+    margin: 0 auto;
     margin-top: 50px;
-    width: 2000px;
-  }
-
+}
+  
 .contacts {
     font-family: arial;
     font-size: 240px;
     margin: 25px;
     width: 2000px;
     height: 2000px;
+    margin-top: 50px;
     background-color: #53354A;
     margin: 0 auto;
   }
@@ -127,7 +128,6 @@ body {
     width: 1800px;
     height: 500px;
     background-color: #903749;
-    /* Center horizontally*/
     margin: 0 auto;
     border-radius: 20px;
   }
