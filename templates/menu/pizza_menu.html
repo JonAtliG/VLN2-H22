@@ -6,14 +6,14 @@
         <div class="pizza_list_container">
             <div class="title">
                 <h1>Pizzas</h1>
-                </div>
+            </div>
             <ul class="menu_list">
                 {% for pizza in pizzas %}
                     <li class="menuitem">
                         <p id="menuName">{{ pizza.name }}</p>
                         <img src={{ pizza.img }} alt="">
                         <p id="itemDescription">{{pizza.desc}}</p>
-                        <button id="addToCart">
+                        <button id="addToCart" onclick="addToCart({{ pizza.id }})">
                             <img src="{% static '/img/CartPhoto.png' %}">
                             </button>
                         <p id="price">{{ pizza.price }}$</p>

@@ -3,6 +3,7 @@ from core.models import Pizza
 from django.core import serializers
 from django.http import HttpResponse
 
+
 # Create your views here.
 def account_index(request):
     return render(request, 'account/account.html')
@@ -18,9 +19,11 @@ def offers_index(request):
     return render(request, 'special_offer.html')
 
 def all_pizzas(request):
+    pizzalist = []
     pizzas = Pizza.objects.all().values()
-    qs_json = serializers.serialize('json', pizzas)
-    return HttpResponse(qs_json)
+    for pizza in pizzas:
+        pizzalist.append(pizza)
+    return render(request, 'menu/pizza_menu.html', context={'pizzas': pizzalist})
 
 
 
