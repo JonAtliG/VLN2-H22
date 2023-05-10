@@ -12,12 +12,9 @@ urlpatterns = [
     path('account/login', LoginView.as_view(template_name="account/login_screen.html"), name='login'),
     path('account/login', views.account_login_index, name="login-index"),
     path('account/create', views.account_create_index, name="create-index"),
-<<<<<<< HEAD
 
     path('custom/create', views.create_pizza, name="create-pizza-index"),
 
-=======
->>>>>>> ee08a9e3a7ec5893381bab8e23fa9d4a02ea5d77
     path('menu', views.menu_index, name="menu-index"),
     path('menu/pizzas', views.pizza_menu_index, name="pizza-menu-index"),
     path('menu/drinks', views.drink_index, name="drink-index"),
