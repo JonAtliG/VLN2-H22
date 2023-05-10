@@ -330,12 +330,43 @@ body {
     border-radius: 15px;
     margin-left: 60%;
 }
+.create_acc_body{
+    margin-top: 5%;
+    margin-left: 25%;
+    width: 50%;
+    background: #53354A;
+    border-radius: 15px;
+}
+#account_form{
+    display: flex;
+    justify-content: right;
+    flex-direction: column;
+    text-align: right;
+    margin-right: 40%;
+}
+#account_form>p{
+    padding: 5px;
+}
+#account_form>p>span{
+    font-size: 0px;
+}
+#account_form>ul{
+    padding: 5px;
+    margin-left: 25%;
+}
 
-/*
-#create_account{
-    margin-left: 45%;
+.create_acc_body>h1{
+    font-size: 50px;
+    margin-left: 25%;
+}
+#create_acc_button{
+    margin-left: 70%;
     display: flex;
     flex-direction: row;
-    width: 10%;
+    width: 20%;
+    padding: 1rem;
+    text-align: center;
+    background-color: #E84545;
+    color: white;
+    border-radius: 15px;
 }
-*/
