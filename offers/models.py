@@ -1,4 +1,5 @@
 from django.db import models
+from dbview.models import DbView
 
 
 # Create your models here.
@@ -18,6 +19,15 @@ class OnPizza(models.Model):
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
     topping = models.ForeignKey(Topping, on_delete=models.CASCADE)
 
+class PizzaView(DbView):
+    @classmethod
+    def get_view_str(cls):
+        return """
+        create view PizzaView as (
+        select * from Pizza p
+        join OnPizza o on o.pizza = p.id
+        join Topping t on o.topping = t.id
+        )"""
 
 class Drinks(models.Model):
     name = models.CharField(max_length=255)
