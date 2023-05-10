@@ -1,5 +1,40 @@
 from django.shortcuts import render
-from menu.pizza_custom import PizzaCreateCustom
+from core.models import Pizza
+from django.core import serializers
+from django.http import HttpResponse
+
+# Create your views here.
+def account_index(request):
+    return render(request, 'account/account.html')
+
+def account_login_index(request):
+    return render(request, 'account/login_screen.html')
+
+def account_create_index(request):
+    return render(request, 'account/create_account.html')
+
+
+def offers_index(request):
+    return render(request, 'special_offer.html')
+
+def all_pizzas(request):
+    pizzas = Pizza.objects.all().values()
+    qs_json = serializers.serialize('json', pizzas)
+    return HttpResponse(qs_json)
+
+
+
+    #for p in pizzas:
+    #    topping_ids = on_pizza.objects.filter(pizza_id=p.id)
+#
+    #    pizza_list.append({
+    #        'name': p.name,
+    #        'img': p.img,
+    #        'desc': ""
+    #    })
+    #for i in pizza_list:
+    #    print(i)
+    #return render(request, 'special_offer.html', context={'pizzas': pizzas})
 
 # Create your views here.
 pizzas = [
@@ -68,6 +103,12 @@ sides = [
     },
 ]
 
+def cart_index(request):
+    return render(request, 'cart.html')
+
+def home_index(request):
+    return render(request, 'home.html')
+
 def menu_index(request):
     return render(request, 'menu/pizza_menu.html', context={'pizzas': pizzas})
 
@@ -77,13 +118,13 @@ def drink_index(request):
 def sides_index(request):
     return render(request, 'menu/side_menu.html', context={'sides': sides})
 
-def create_pizza(request):
-    if request.method == 'POST':
-        form = create_pizza(data=request.POST)
-        if form.is_valid():
-            pizza = form.save()
-        else:
-            form = PizzaCreateCustom()
-    return render(request, 'pizza/create_pizza.html', {
-        'form': form
-})
+#def create_pizza(request):
+#    if request.method == 'POST':
+#        form = create_pizza(data=request.POST)
+#        if form.is_valid():
+#            pizza = form.save()
+#        else:
+#            form = PizzaCreateCustom()
+#    return render(request, 'pizza/create_pizza.html', {
+#        'form': form
+#})
