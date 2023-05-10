@@ -1,8 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from core.models import Pizza
 from core.models import PizzaMenu
 from django.http import HttpResponse
+<<<<<<< HEAD
 from core.forms.pizza_form import PizzaCreateForm
+=======
+from django.contrib.auth.forms import UserCreationForm
+from .forms import Create_Account_Form
+>>>>>>> ee08a9e3a7ec5893381bab8e23fa9d4a02ea5d77
 
 
 # Create your views here.
@@ -12,8 +17,16 @@ def account_index(request):
 def account_login_index(request):
     return render(request, 'account/login_screen.html')
 
+
 def account_create_index(request):
-    return render(request, 'account/create_account.html')
+    if request.method == 'POST':
+        form = Create_Account_Form(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login-index')
+    return render(request, 'account/create_account.html', {
+        'form': Create_Account_Form()
+    })
 
 
 def offers_index(request):
