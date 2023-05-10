@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from menu.pizza_custom import PizzaCreateCustom
 
 # Create your views here.
 pizzas = [
@@ -88,7 +89,7 @@ def create_pizza(request):
         if form.is_valid():
             pizza = form.save()
         else:
-            form = PizzaCreateForm()
+            form = PizzaCreateCustom()
     return render(request, 'pizza/create_pizza.html', {
         'form': form
 })

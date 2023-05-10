@@ -2,7 +2,7 @@ from django.forms import ModelForm, widgets
 from django import forms
 from menu.models import Pizza
 class PizzaCreateCustom(ModelForm):
-    image = forms.CharField(required=True, widget=forms.TextInput(attrs={ 'class': 'form-control'}))
+    image = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
     class Meta:
        model = Pizza
        exclude = ['id']
