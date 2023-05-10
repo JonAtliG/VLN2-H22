@@ -1,10 +1,7 @@
 from django.shortcuts import render, redirect
 from core.models import Pizza
-from core.models import PizzaMenu
-from django.http import HttpResponse
-from core.forms.pizza_form import PizzaCreateForm
-from django.contrib.auth.forms import UserCreationForm
-from .forms import Create_Account_Form
+from core.forms.user_form import PizzaCreateForm
+from core.forms.user_form import Create_Account_Form
 
 
 # Create your views here.
