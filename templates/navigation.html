@@ -17,8 +17,14 @@
                 Cart
             </a>
         </li>
-        <li class="nav_item">
-            <a href="{% url 'account-index' %}" class="nav_link">Account</a>
-        </li>
+        {% if user.is_authenticated %}
+            <li class="nav_item">
+                <img class="profile_pic" src="{{ user.Profile_picture }}">
+            </li>
+        {% else %}
+            <li class="nav_item">
+                <a href="{% url 'account-index' %}" class="nav_link">Account</a>
+            </li>
+        {% endif %}
     </ul>
 </nav>
