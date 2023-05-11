@@ -19,7 +19,9 @@
         </li>
         {% if user.is_authenticated %}
             <li class="nav_item">
-                <img class="profile_pic" src="{{ user.Profile_picture }}">
+                <a href="{% url 'account-index' %}">
+                <img class="profile_pic" src="{{ user.user.Profile_picture }}" onerror="this.onerror=null;this.src='https://dfge.de/wp-content/uploads/blank-profile-picture-973460_640.png';">
+                </a>
             </li>
         {% else %}
             <li class="nav_item">

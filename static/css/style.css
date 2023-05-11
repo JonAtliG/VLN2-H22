@@ -452,7 +452,7 @@ body {
 .account_options>h1{
     margin-left: 40%;
 }
-.profile_pic>img{
-    background-image:url("https://dfge.de/wp-content/uploads/blank-profile-picture-973460_640.png");
-    width: 500px;
+.profile_pic{
+    width: 85px;
+    border-radius: 35px;
 }
