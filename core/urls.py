@@ -9,6 +9,7 @@ urlpatterns = [
     path('offers', views.offers_index, name="offers-index"),
 
     path('account/', views.account_index, name="account-index"),
+    path('account/profile', views.profile_index, name="profile-index"),
     path('account/login', LoginView.as_view(template_name="account/login_screen.html"), name='login'),
     path('account/logout', LogoutView.as_view(next_page='login'), name='logout'),
     path('account/login', views.account_login_index, name="login-index"),

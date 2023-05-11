@@ -22,7 +22,20 @@ class Create_Account_Form(UserCreationForm):
 class ProfileForm(ModelForm):
     class Meta:
         model = User
-        exclude = ['id', 'user']
+        exclude = ['id',
+                   'password',
+                   'last_login',
+                   'is_superuser',
+                   'groups',
+                   'user_permissions',
+                   'username',
+                   'first_name',
+                   'last_name',
+                   'email',
+                   'is_staff',
+                   'is_active',
+                   'date_joined'
+                   ]
         widgets = {
             'Phone_Number': widgets.TextInput(attrs={'class': 'form-control'}),
             'Profile_Image': widgets.TextInput(attrs={'class': 'form-control'})
