@@ -2,12 +2,17 @@ from django.db import models
 from dbview.models import DbView
 from django.contrib.auth.models import User as BaseUserClass
 from django.contrib.contenttypes import fields
+from django_countries.fields import CountryField
 
 
 class User(BaseUserClass):
     Phone_Number = models.IntegerField(blank=False)
     Profile_picture = models.CharField(max_length=9999)
-
+    Street_Name = models.CharField(max_length=255)
+    House_Number = models.IntegerField(max_length=5)
+    Country = CountryField()
+    Postal_Code = models.IntegerField(max_length=5)
+    City = models.CharField(max_length=255)
 
 class Pizza(models.Model):
     User = models.ForeignKey(BaseUserClass, blank=True, null=True, on_delete=models.CASCADE)
