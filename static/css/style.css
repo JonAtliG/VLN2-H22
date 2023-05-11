@@ -194,12 +194,12 @@ body {
 
 .savedcontact {
     background-color: #903749;
-    width: 1800px;
-    height: 500px;
+    width: 1500px;
+    height: 400px;
     display: block;
     position: absolute;
-    font-size: 70px;
-      margin-top: 50px;
+    font-size: 50px;
+    margin-top: 50px;
 }
 
 .cartprogress {
@@ -210,6 +210,30 @@ body {
     mix-blend-mode: multiply;
     position: absolute;
     bottom: 12px;
+}
+
+.newcontact {
+    background-color: #E84545;
+    width: 1500px;
+    height: 400px;
+    margin-top: 700px;
+    font-size: 70px;
+}
+
+.contactname {
+    font-family: 'Inter';
+    font-style: italic;
+    font-size: 80px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.contactinfo {
+    font-family: 'Inter';
+    font-style: italic;
+    font-size: 60px;
+    color: #FFFFFF;
+    margin-left: 10px;
 }
 
 #addToCart img{
