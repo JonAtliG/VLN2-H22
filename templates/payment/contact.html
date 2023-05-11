@@ -8,23 +8,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 </head>
 <body>
     {% include 'navigation.html' %}
 
-    <img id="cartprogress" src="/backup/images/progress1.png" alt="">
+    <img class='cartprogress' src="{% static "/img/progress1.png" %}" >
+
 
     <div class = 'contacts'>
     <button class = 'savedcontact'>
-        <p id = "contactname">Sigurður P.</p>
-        <p id = "contactinfo">8570791</p>
-        <p id = "contactinfo">Kórsalir 5</p>
-        <p id = "contactinfo">Kópavogur</p>
-        <p id = "contactinfo">Iceland</p>
+        <p> {{ user.user.first_name }} {{ user.user.last_name }} </p>
+        <p> {{ user.user.Phone_Number }} </p>
+        <p> {{ user.user.Street_Name }} {{ user.user.House_Number }} </p>
+        <p> {{ user.user.City }} </p>
+        <p> {{ user.user.Country }} </p>
     </button>
+
     <button class = 'newcontact'>
-        <p>Add New contact</p>
-        <p>+</p>
+        Change Address
     </button>
     <a href="{% url 'payment_index' %}">
         <button class="btn-primary" onclick=""></button>

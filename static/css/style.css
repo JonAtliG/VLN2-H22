@@ -192,6 +192,20 @@ body {
     color: #FFFFFF;
 }
 
+.savedcontact {
+    background-color: #903749;
+    width: 1800px;
+    height: 500px;
+    display: block;
+    position: absolute;
+    font-size: 70px;
+      margin-top: 50px;
+}
+
+.cartprogress {
+    margin-left: 100px;
+}
+
 #addToCart{
     mix-blend-mode: multiply;
     position: absolute;
