@@ -3,16 +3,11 @@ from core.models import Pizza
 
 
 class PizzaCreateForm(ModelForm):
-
-    def __init__(self, user_id=None, *args, **kwargs):
-        super(PizzaCreateForm, self).__init__(*args, **kwargs)
-        self.initial['User'] = user_id
-
     class Meta:
         model = Pizza
         exclude = ['id', 'img']
         widgets = {
-            'User': widgets.NumberInput(attrs={'class': 'hidden'}),
+            'User': widgets.NumberInput(attrs={'class': 'user_id'}),
             'name': widgets.TextInput(attrs={ 'class': 'form-control', 'placeholder': 'Custom pizza'}),
             'Bacon': widgets.CheckboxInput(attrs={'class': 'checkbox'}),
             'Chicken': widgets.CheckboxInput(attrs={'class': 'checkbox'}),
@@ -30,6 +25,12 @@ class PizzaCreateForm(ModelForm):
             'Pizza_Sauce': widgets.CheckboxInput(attrs={'class': 'checkbox'}),
         }
 
+    def set_user(self, user_id):
+        self.initial['User'] = user_id
+
+    def user(self):
+        return self['User']
+
     def name(self):
         return self['name']
 
@@ -43,5 +44,5 @@ class PizzaCreateForm(ModelForm):
         return [self['Cheese'], self['Mozzarella'], self['Pepper_Cheese'], self['Yellow_Cheese']]
 
     def sauce(self):
-        return [self['Pizza_Sauce'], self['Mozzarella'], self['Pepper_Cheese'], self['Yellow_Cheese']]
+        return [self['Pizza_Sauce']]
 

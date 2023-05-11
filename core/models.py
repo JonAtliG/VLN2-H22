@@ -8,13 +8,12 @@ class User(BaseUserClass):
     Profile_picture = models.CharField(max_length=9999)
 
 
-#class Profile(models.Model):
-#    user = models.OneToOneField(User, on_delete=models.CASCADE)
-#    profile_image = models.CharField(max_length=9999)
-
-class Pizza(models.Model):
-    User = models.ForeignKey(BaseUserClass, blank=True, null=True, on_delete=models.CASCADE)
+class Product(models.Model):
     name = models.CharField(max_length=255)
+
+
+class Pizza(Product):
+    User = models.ForeignKey(BaseUserClass, blank=True, null=True, on_delete=models.CASCADE)
     img = models.CharField(max_length=999, blank=True)
     Bacon = models.BooleanField(default=False)
     Chicken = models.BooleanField(default=False)
@@ -32,25 +31,21 @@ class Pizza(models.Model):
     Pizza_Sauce = models.BooleanField(default=False)
 
 
-class Side(models.Model):
-    name = models.CharField(max_length=255)
+class Side(Product):
     img = models.CharField(max_length=999, blank=True)
     desc = models.CharField(max_length=999, blank=True)
     price = models.FloatField()
 
 
-class Drink(models.Model):
-    name = models.CharField(max_length=255)
+class Drink(Product):
     img = models.CharField(max_length=999, blank=True)
     desc = models.CharField(max_length=999, blank=True)
     price = models.FloatField()
 
 
-class UserPizza(models.Model):
+class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
-
-
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 #
 #class User(models.Model):

@@ -2,6 +2,7 @@
 {% block content %}
     <form id="pizza_form" class="form from-horizontal" action="{% url 'create-pizza-index' %}" method="post">
         {% csrf_token %}
+        {{ form.user.as_hidden }}
         <div class="name_selection_container">
             <label for="{{ field.auto_id }}"></label>
             <p>{{ form.name.name }}</p>
