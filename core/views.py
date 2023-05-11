@@ -107,7 +107,7 @@ def drink_menu_index(request):
     return render(request, 'menu/menu.html', context={'data': {'drinks': drink_object}})
 
 def cart_index(request):
-    return render(request, 'cart.html')
+    return render(request, 'payment/contact.html')
 
 
 def home_index(request):
