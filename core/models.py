@@ -16,7 +16,7 @@ class User(BaseUserClass):
 
 
 class PaymentMethod(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    User = models.ForeignKey(User, on_delete=models.CASCADE)
     Card_Number = models.IntegerField(null=True, blank=True)
     Exp_Date = models.DateField(null=True, blank=True)
     Cvc = models.IntegerField(null=True, blank=True)

@@ -23,8 +23,8 @@ urlpatterns = [
     path('menu/drinks', views.menu_index, name="drink-menu-index"),
     path('menu/sides', views.menu_index, name="side-menu-index"),
     path('payment/contact', views.contact_index, name='contact_index'),
-    path('payment/payment', views.payment_index, name='payment_index'),
-    path('payment/order_confirm', views.order_confirm_infex, name='order_confirm_index')
+    path('payment/payment', views.input_card_info, name='payment_index'),
+    path('payment/order_confirm', views.order_confirm_index, name='order_confirm_index'),
     path('payment/order_confirm', views.order_confirm_index, name='order_confirm_index'),
     #path('menu/Create_Pizza', views.create_pizza, name="create_pizza")
 ]
