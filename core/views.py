@@ -167,7 +167,17 @@ def cart_index(request):
 def home_index(request):
     return render(request, 'home.html')
 
+
 # def create_pizza(request):
+
+def contact_index(request):
+    return render(request, 'payment/contact.html')
+
+def payment_index(request):
+    return render(request, 'payment/payment.html')
+
+
+#def create_pizza(request):
 #    if request.method == 'POST':
 #        form = create_pizza(data=request.POST)
 #        if form.is_valid():
