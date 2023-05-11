@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from core.models import Pizza, User, Side, Drink, Profile
+from core.models import Pizza, User, Side, Drink
 from core.forms.pizza_form import PizzaCreateForm
 from core.forms.user_form import Create_Account_Form, ProfileForm
 
@@ -29,7 +29,7 @@ def account_index(request):
 
 
 def profile(request):
-    profile_man = Profile.objects.filter(user=request.user).first()
+    profile_man = User.objects.filter(user=request.user).first()
     if request.method == 'POST':
         print(1)
         form = ProfileForm(instance=profile_man, data=request.POST)

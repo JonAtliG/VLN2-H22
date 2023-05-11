@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import RegexValidator
-from core.models import User, Profile
+from core.models import User
 from django.forms import ModelForm, widgets
 
 
@@ -21,7 +21,7 @@ class Create_Account_Form(UserCreationForm):
 
 class ProfileForm(ModelForm):
     class Meta:
-        model = Profile
+        model = User
         exclude = ['id', 'user']
         widgets = {
             'Phone_Number': widgets.TextInput(attrs={'class': 'form-control'}),
