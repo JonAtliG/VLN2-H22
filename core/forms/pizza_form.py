@@ -23,3 +23,19 @@ class PizzaCreateForm(ModelForm):
             'Yellow_Cheese': widgets.CheckboxInput(attrs={'class': 'checkbox'}),
             'Pizza_Sauce': widgets.CheckboxInput(attrs={'class': 'checkbox'}),
         }
+
+    def name(self):
+        return self['name']
+
+    def meat(self):
+        return [self['Bacon'], self['Chicken'], self['Ham'], self['Pepperoni']]
+
+    def greens(self):
+        return [self['Jalapeno'], self['Mushrooms'], self['Onion'], self['Paprika'], self['Pineapple']]
+
+    def cheese(self):
+        return [self['Cheese'], self['Mozzarella'], self['Pepper_Cheese'], self['Yellow_Cheese']]
+
+    def sauce(self):
+        return [self['Pizza_Sauce'], self['Mozzarella'], self['Pepper_Cheese'], self['Yellow_Cheese']]
+
