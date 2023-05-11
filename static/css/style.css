@@ -456,3 +456,12 @@ body {
     width: 85px;
     border-radius: 35px;
 }
+.payment_body{
+    width: 50%;
+    height: 600px;
+    margin-top: 10px;
+    background-color: #53354A;
+    border-radius: 15px;
+    margin-right:auto;
+    margin-left: auto;
+}

@@ -116,6 +116,8 @@ def home_index(request):
 def contact_index(request):
     return render(request, 'payment/contact.html')
 
+def payment_index(request):
+    return render(request, 'payment/payment.html')
 
 
 #def create_pizza(request):
