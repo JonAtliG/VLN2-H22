@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import RegexValidator
 from core.models import User
-
+from django.forms import ModelForm, widgets
 
 class Create_Account_Form(UserCreationForm):
     email = forms.EmailField
@@ -14,4 +14,12 @@ class Create_Account_Form(UserCreationForm):
         help_texts = {
             'password2': None,
             'username': None,
+        }
+
+class ProfileForm(ModelForm):
+    class Meta:
+        model = User
+        exclude = [ 'id', 'user']
+        widgets = {
+            'profile_image':widgets.TextInput(attrs={'class': 'form-control'})
         }

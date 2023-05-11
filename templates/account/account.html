@@ -3,6 +3,14 @@
 {% block content %}
 <div class = 'account_options'>
     {% if user.is_authenticated %}
+        {% block content %}
+            <h1>Profile</h1>
+            <form class="form form-horizontal" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" class="btn btn-primary" value="Update">
+            </form>
+        {% endblock %}
         <a href="{% url 'logout' %}">
         <button id='button_one' onclick="">Log Out</button>
         </a>

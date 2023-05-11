@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect
-from core.models import Pizza
-from core.models import Side
-from core.models import Drink
+from core.models import Pizza, User, Side, Drink
 from core.forms.pizza_form import PizzaCreateForm
 from core.forms.user_form import Create_Account_Form
 
@@ -27,6 +25,14 @@ def __get_pizza_list(queryset):
 
 def account_index(request):
     return render(request, 'account/account.html')
+
+
+def profile(request):
+    profile = User.objects.filter(user=request.user).first()
+    if request.method == 'POST':
+        print(1)
+    return render(request, 'account/account.html')
+        'form'
 
 
 def account_login_index(request):
