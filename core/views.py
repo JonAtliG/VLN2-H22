@@ -26,7 +26,7 @@ def __get_pizza_list(queryset):
     return pizza_list
 
 
-def __get_menu_json_object(pizza_query=[], side_query=[], drink_query=[]):
+def __get_menu_json_object(pizza_query, side_query, drink_query, user_pizza_query):
     json_data = json.dumps(
         [
             {
@@ -52,6 +52,29 @@ def __get_menu_json_object(pizza_query=[], side_query=[], drink_query=[]):
                             'Pizza_Sauce': pizza.Pizza_Sauce,
                         }
                     } for pizza in pizza_query
+                ],
+                'user_pizzas': [
+                    {
+                        'id': pizza.id,
+                        'name': pizza.name,
+                        'img': pizza.img,
+                        'toppings': {
+                            'Bacon': pizza.Bacon,
+                            'Chicken': pizza.Chicken,
+                            'Ham': pizza.Ham,
+                            'Pepperoni': pizza.Pepperoni,
+                            'Jalapeno': pizza.Jalapeno,
+                            'Mushrooms': pizza.Mushrooms,
+                            'Onion': pizza.Onion,
+                            'Paprika': pizza.Paprika,
+                            'Pineapple': pizza.Pineapple,
+                            'Cheese': pizza.Cheese,
+                            'Mozzarella': pizza.Mozzarella,
+                            'Pepper_Cheese': pizza.Pepper_Cheese,
+                            'Yellow_Cheese': pizza.Yellow_Cheese,
+                            'Pizza_Sauce': pizza.Pizza_Sauce,
+                        }
+                    } for pizza in user_pizza_query
                 ],
                 'sides': [
                     {
@@ -146,28 +169,34 @@ def saved_menu_index(request):
 
 
 def menu_index(request):
-    pizza_list = __get_pizza_list(Pizza.objects.all().filter(User__isnull=True).values())
-    side_object = Side.objects.all().values('name', 'img', 'desc', 'price')
-    drink_object = Drink.objects.all().values('name', 'img', 'desc', 'price')
-    return render(request, 'menu/menu.html', context={'data': {'pizzas': pizza_list,
-                                                               'sides': side_object,
-                                                               'drinks': drink_object}})
+    if request.user.is_authenticated:
+        user_pizzas = Pizza.objects.all().filter(User=request.user)
+    else:
+        user_pizzas = []
+    pizzas = Pizza.objects.all().filter(User__isnull=True)
+    sides = Side.objects.all()
+    drinks = Drink.objects.all()
+    context_data = __get_menu_json_object(pizza_query=pizzas,
+                                          side_query=sides,
+                                          drink_query=drinks,
+                                          user_pizza_query=user_pizzas)
+    return render(request, 'menu/menu.html', context={'data': context_data})
 
 
-def pizza_menu_index(request):
-    # pizza_list = __get_pizza_list(Pizza.objects.all().filter(User__isnull=True).values())
-    data = __get_menu_json_object(pizza_query=Pizza.objects.all().filter(User__isnull=True))
-    return render(request, 'menu/menu.html', context={'data': data})
-
-
-def side_menu_index(request):
-    side_object = Side.objects.all().values('name', 'img', 'desc', 'price')
-    return render(request, 'menu/menu.html', context={'data': {'sides': side_object}})
-
-
-def drink_menu_index(request):
-    drink_object = Drink.objects.all().values('name', 'img', 'desc', 'price')
-    return render(request, 'menu/menu.html', context={'data': {'drinks': drink_object}})
+#def pizza_menu_index(request):
+#    # pizza_list = __get_pizza_list(Pizza.objects.all().filter(User__isnull=True).values())
+#    data = __get_menu_json_object(pizza_query=Pizza.objects.all().filter(User__isnull=True))
+#    return render(request, 'menu/menu.html', context={'data': data})
+#
+#
+#def side_menu_index(request):
+#    side_object = Side.objects.all().values('name', 'img', 'desc', 'price')
+#    return render(request, 'menu/menu.html', context={'data': {'sides': side_object}})
+#
+#
+#def drink_menu_index(request):
+#    drink_object = Drink.objects.all().values('name', 'img', 'desc', 'price')
+#    return render(request, 'menu/menu.html', context={'data': {'drinks': drink_object}})
 
 
 def cart_index(request):
