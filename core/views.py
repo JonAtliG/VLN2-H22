@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from core.models import Pizza, User, Side, Drink
 from core.forms.pizza_form import PizzaCreateForm
 from core.forms.user_form import Create_Account_Form, ProfileForm
+from core.forms.payment_form import PaymentForm
 import json
 
 
@@ -151,6 +152,15 @@ def create_pizza_index(request):
         'form': form
     })
 
+def input_card_info(request):
+    if request.method == 'POST':
+        form = PaymentForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('order_confirm_index')
+    form = PaymentForm()
+    form.set_user(request.user.id)
+    return render(request, 'payment/payment.html')
 
 @login_required(login_url='login-index')
 def saved_menu_index(request):
@@ -204,6 +214,10 @@ def contact_index(request):
 
 def payment_index(request):
     return render(request, 'payment/payment.html')
+
+def order_confirm_infex(request):
+    return render(request, 'payment/order_confirm.html')
+
 
 
 #def create_pizza(request):
