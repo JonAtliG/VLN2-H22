@@ -2,66 +2,8 @@
 {% load static %}
 {% block content %}
     {% include 'menu/menu_navigation.html' %}
-    <div class="menu_container">
-        {% if data.pizzas %}
-            <div class="pizza_list_container">
-                <div class="title">
-                    <h1>Pizzas</h1>
-                </div>
-                <ul class="menu_list">
-                    {% for pizza in data.pizzas %}
-                        <li class="menuitem">
-                            <p id="menuName">{{ pizza.name }}</p>
-                            <img src={{ pizza.img }} alt="{% static '/img/pizza logo.png' %}">
-                            <p id="itemDescription">{{pizza.desc}}</p>
-                            <button id="addToCart" onclick="addToCart({{ pizza.id }})">
-                                <img src="{% static '/img/CartPhoto.png' %}">
-                            </button>
-                            <p id="price">{{ pizza.price }}$</p>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
-        {% if data.sides %}
-            <div class="side_list_container">
-                <div class="title">
-                    <h1>Sewer Sides</h1>
-                </div>
-                <ul class="menu_list">
-                    {% for side in data.sides %}
-                        <li class="menuitem">
-                            <p id="menuName">{{ side.name }}</p>
-                            <img src={{ side.img }} alt="">
-                            <p id="itemDescription">{{ side.desc }}</p>
-                            <button id="addToCart">
-                                <img src="{% static '/img/CartPhoto.png' %}">
-                                </button>
-                            <p id="price">{{ side.price }}$</p>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
-        {% if data.drinks %}
-            <div class="drink_list_container">
-                <div class="title">
-                    <h1>Drinks</h1>
-                </div>
-                <ul class="menu_list">
-                    {% for drink in data.drinks %}
-                        <li class="menuitem">
-                            <p id="menuName">{{ drink.name }}</p>
-                            <img src={{ drink.img }} alt="">
-                            <p id="itemDescription">{{ drink.desc }}</p>
-                            <button id="addToCart">
-                                <img src="{% static '/img/CartPhoto.png' %}">
-                                </button>
-                            <p id="price">{{ drink.price }}$</p>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
+    <div style="display: none" id="jsonData" data-json="{{ data }}"></div>
+    <script src="{% static 'js/menu.js' %}"></script>
+    <div id="menu_container" class="menu_container">
     </div>
 {% endblock %}

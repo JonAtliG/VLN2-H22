@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from core.models import Pizza, User, Side, Drink
 from core.forms.pizza_form import PizzaCreateForm
 from core.forms.user_form import Create_Account_Form, ProfileForm
+import json
 
 
 def __get_pizza_list(queryset):
@@ -24,6 +25,57 @@ def __get_pizza_list(queryset):
     return pizza_list
 
 
+def __get_menu_json_object(pizza_query=[], side_query=[], drink_query=[]):
+    json_data = json.dumps(
+        [
+            {
+                'pizzas': [
+                    {
+                        'id': pizza.id,
+                        'name': pizza.name,
+                        'img': pizza.img,
+                        'toppings': {
+                            'Bacon': pizza.Bacon,
+                            'Chicken': pizza.Chicken,
+                            'Ham': pizza.Ham,
+                            'Pepperoni': pizza.Pepperoni,
+                            'Jalapeno': pizza.Jalapeno,
+                            'Mushrooms': pizza.Mushrooms,
+                            'Onion': pizza.Onion,
+                            'Paprika': pizza.Paprika,
+                            'Pineapple': pizza.Pineapple,
+                            'Cheese': pizza.Cheese,
+                            'Mozzarella': pizza.Mozzarella,
+                            'Pepper_Cheese': pizza.Pepper_Cheese,
+                            'Yellow_Cheese': pizza.Yellow_Cheese,
+                            'Pizza_Sauce': pizza.Pizza_Sauce,
+                        }
+                    } for pizza in pizza_query
+                ],
+                'sides': [
+                    {
+                        'id': side.id,
+                        'name': side.name,
+                        'img': side.img,
+                        'desc': side.desc,
+                        'price': side.price
+                    } for side in side_query
+                ],
+                'drinks': [
+                    {
+                        'id': drink.id,
+                        'name': drink.name,
+                        'img': drink.img,
+                        'desc': drink.desc,
+                        'price': drink.price
+                    } for drink in drink_query
+                ],
+            }
+        ]
+    )
+    return json_data
+
+
 def account_index(request):
     if request.user.is_authenticated:
         return redirect('profile-index')
@@ -40,7 +92,7 @@ def profile_index(request):
     form = ProfileForm(instance=profile_man)
     return render(request, 'account/account.html', {
         'form': form
-        })
+    })
 
 
 def account_login_index(request):
@@ -93,8 +145,9 @@ def menu_index(request):
 
 
 def pizza_menu_index(request):
-    pizza_list = __get_pizza_list(Pizza.objects.all().filter(User__isnull=True).values())
-    return render(request, 'menu/menu.html', context={'data': {'pizzas': pizza_list}})
+    # pizza_list = __get_pizza_list(Pizza.objects.all().filter(User__isnull=True).values())
+    data = __get_menu_json_object(pizza_query=Pizza.objects.all().filter(User__isnull=True))
+    return render(request, 'menu/menu.html', context={'data': data})
 
 
 def side_menu_index(request):
@@ -106,6 +159,7 @@ def drink_menu_index(request):
     drink_object = Drink.objects.all().values('name', 'img', 'desc', 'price')
     return render(request, 'menu/menu.html', context={'data': {'drinks': drink_object}})
 
+
 def cart_index(request):
     return render(request, 'cart.html')
 
@@ -113,8 +167,7 @@ def cart_index(request):
 def home_index(request):
     return render(request, 'home.html')
 
-
-#def create_pizza(request):
+# def create_pizza(request):
 #    if request.method == 'POST':
 #        form = create_pizza(data=request.POST)
 #        if form.is_valid():
@@ -123,4 +176,4 @@ def home_index(request):
 #            form = PizzaCreateCustom()
 #    return render(request, 'pizza/create_pizza.html', {
 #        'form': form
-#})
+# })
