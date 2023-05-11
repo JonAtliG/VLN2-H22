@@ -199,11 +199,11 @@ body {
     display: block;
     position: absolute;
     font-size: 50px;
-    margin-top: 50px;
+    margin-top: 1%;
 }
 
 .cartprogress {
-    margin-left: 100px;
+    margin-left: 27%;
 }
 
 #addToCart{
@@ -212,18 +212,31 @@ body {
     bottom: 12px;
 }
 
-.newcontact {
+.contacts {
+    font-family: arial;
+    font-size: 240px;
+    margin: 25px;
+    width: 2000px;
+    height: auto;
+    margin-top: 50px;
+    background-color: #53354A;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.editcontact {
     background-color: #E84545;
     width: 1500px;
     height: 400px;
-    margin-top: 700px;
+    margin-top: 32%;
     font-size: 70px;
 }
 
 .contactname {
     font-family: 'Inter';
     font-style: italic;
-    font-size: 80px;
+    font-size: 70px;
     text-align: center;
     color: #FFFFFF;
 }
@@ -231,9 +244,8 @@ body {
 .contactinfo {
     font-family: 'Inter';
     font-style: italic;
-    font-size: 60px;
+    font-size: 50px;
     color: #FFFFFF;
-    margin-left: 10px;
 }
 
 #addToCart img{
@@ -241,6 +253,9 @@ body {
     height: 20px;
     float: bottom;
 
+}
+.backnav {
+    margin-left: 50%;
 }
 
 .drink {
