@@ -434,8 +434,9 @@ body {
 
 #edit_profile_form{
     display: flex;
-    justify-content: right;
     flex-direction: column;
+    margin-right: auto;
+    margin-left: 30%;
     font-size: 20px;
     width: 40%;
 }
@@ -446,7 +447,7 @@ body {
 }
 .account_options>h2{
     font-size: 25px;
-    margin-left: 10%;
+    margin-left: 40%;
 }
 .account_options>h1{
     margin-left: 40%;
