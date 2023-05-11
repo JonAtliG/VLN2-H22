@@ -49,13 +49,13 @@ def offers_index(request):
 
 
 def create_pizza(request):
-    if request.method == 'POST':
-        print(1)
-    else:
-        form = PizzaCreateForm()
-        return render(request, 'menu/create_pizza.html', {
-            'form': form
-        })
+    #if request.method == 'POST':
+    #    print(1)
+    #else:
+    form = PizzaCreateForm()
+    return render(request, 'menu/create_pizza.html', {
+        'form': form
+    })
 
 
 def menu_index(request):

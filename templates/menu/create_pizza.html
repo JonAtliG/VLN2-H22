@@ -1,39 +1,39 @@
 {% extends "base.html" %}
 {% block content %}
-    <form class="form from-horizontal" action="{% url 'create-pizza-index' %}" method="post">
-            {% csrf_token %}
-            <div class="name_selection_container">
-                <label for="{{ field.auto_id }}"></label>
-                <p>{{ form.name.name }}</p>
-                {{ form.name.as_widget }}
-            </div>
-            <div class="meat_selection_container">
-                {% for field in form.meat %}
-                    <div class="topping_box">
-                        <label for="{{ field.auto_id }}"></label>
-                        {{ field.as_widget }}
-                        <p>{{ field.name }}</p>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="greens_selection_container">
-                {% for field in form.greens %}
-                    <div class="topping_box">
-                        <label for="{{ field.auto_id }}"></label>
-                        {{ field.as_widget }}
-                        <p>{{ field.name }}</p>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="cheese_selection_container">
-                {% for field in form.cheese %}
-                    <div class="topping_box">
-                        <label for="{{ field.auto_id }}"></label>
-                        {{ field.as_widget }}
-                        <p>{{ field.name }}</p>
-                    </div>
-                {% endfor %}
-            </div>
+    <form id="pizza_form" class="form from-horizontal" action="{% url 'create-pizza-index' %}" method="post">
+        {% csrf_token %}
+        <div class="name_selection_container">
+            <label for="{{ field.auto_id }}"></label>
+            <p>{{ form.name.name }}</p>
+            {{ form.name.as_widget }}
+        </div>
+        <div class="topping_selection_container" id="meat_selection_container">
+            {% for field in form.meat %}
+                <div class="topping_box">
+                    <label for="{{ field.auto_id }}"></label>
+                    {{ field.as_widget }}
+                    <p>{{ field.name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="topping_selection_container" id="greens_selection_container">
+            {% for field in form.greens %}
+                <div class="topping_box">
+                    <label for="{{ field.auto_id }}"></label>
+                    {{ field.as_widget }}
+                    <p>{{ field.name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="topping_selection_container" id="cheese_selection_container">
+            {% for field in form.cheese %}
+                <div class="topping_box">
+                    <label for="{{ field.auto_id }}"></label>
+                    {{ field.as_widget }}
+                    <p>{{ field.name }}</p>
+                </div>
+            {% endfor %}
+        </div>
         <input type="submit" value="Create" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0" />
     </form>
 {% endblock %}
