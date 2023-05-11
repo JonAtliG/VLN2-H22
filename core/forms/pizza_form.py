@@ -7,6 +7,7 @@ class PizzaCreateForm(ModelForm):
         model = Pizza
         exclude = ['id', 'img']
         widgets = {
+            'User': widgets.NumberInput(attrs={'class': 'hidden'}),
             'name': widgets.TextInput(attrs={ 'class': 'form-control', 'placeholder': 'Custom pizza'}),
             'Bacon': widgets.CheckboxInput(attrs={'class': 'checkbox'}),
             'Chicken': widgets.CheckboxInput(attrs={'class': 'checkbox'}),
@@ -38,4 +39,3 @@ class PizzaCreateForm(ModelForm):
 
     def sauce(self):
         return [self['Pizza_Sauce'], self['Mozzarella'], self['Pepper_Cheese'], self['Yellow_Cheese']]
-
