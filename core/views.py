@@ -7,25 +7,6 @@ from core.forms.payment_form import PaymentForm
 import json
 
 
-def __get_pizza_list(queryset):
-    pizza_list = []
-    for i, pizza in enumerate(queryset):
-        pizza_list.append({'id': pizza['id']})
-        pizza_list[i]['name'] = pizza['name']
-        pizza_list[i]['img'] = pizza['img']
-
-        toppings = []
-        for topping in pizza.keys():
-            if pizza[topping] is True:
-                toppings.append(topping.replace("_", " "))
-        if len(toppings) > 1:
-            pizza_list[i]['desc'] = f"{', '.join(toppings[:-1])} and  {toppings[-1]}"
-        else:
-            pizza_list[i]['desc'] = "" if len(toppings) == 0 else toppings[1]
-        pizza_list[i]['price'] = round(10.99 + len(toppings), 2)
-    return pizza_list
-
-
 def __get_menu_json_object(pizza_query, side_query, drink_query, user_pizza_query):
     json_data = json.dumps(
         [
@@ -143,9 +124,8 @@ def create_pizza_index(request):
     if request.method == 'POST':
         form = PizzaCreateForm(data=request.POST)
         if form.is_valid():
-            if request.user.id == form['User']:
-                form.save()
-                return redirect('saved-menu-index')
+            form.save()
+            return redirect('saved-menu-index')
     form = PizzaCreateForm()
     form.set_user(request.user.id)
     return render(request, 'menu/create_pizza.html', {
@@ -162,10 +142,10 @@ def input_card_info(request):
     form.set_user(request.user.id)
     return render(request, 'payment/payment.html')
 
-@login_required(login_url='login-index')
-def saved_menu_index(request):
-    pizza_list = __get_pizza_list(Pizza.objects.filter(User=request.user).values())
-    return render(request, 'menu/menu.html', context={'data': {'pizzas': pizza_list}})
+#@login_required(login_url='login-index')
+#def saved_menu_index(request):
+#    pizza_list = __get_pizza_list(Pizza.objects.filter(User=request.user).values())
+#    return render(request, 'menu/menu.html', context={'data': {'pizzas': pizza_list}})
 
 
 def menu_index(request):
