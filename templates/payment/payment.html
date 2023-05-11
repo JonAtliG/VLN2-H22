@@ -6,25 +6,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="stylebackup.css">
+    <title>Sewer Pizza</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 </head>
 <body>
     {% include 'navigation.html' %}
-
-    <img id="cartprogress" src="/backup/images/progress2.png" alt="">
-
-    <div class = 'contacts'>
-    <button class = 'savedcontact'>
-        <p id = "contactname"> Credit card</p>
-        <p id = "contactinfo">Cardholder Name: David Johansson</p>
-        <p id = "contactinfo">card number: **** **** **** 8461</p>
-        <p id = "contactinfo">Exp. date: 02/24</p>
-    </button>
-    <button class = 'newcontact'>
-        <p>Add New payment method</p>
-        <p>+</p>
-    </button>
+    <div class="payment_body">
+        <h1>Payment Information</h1>
+        {% block content %}
+            <form id="payment_info" class="form form-horizontal" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input id="conf_payment_button" type="submit" class="btn btn-primary" value="Confirm">
+            </form>
+        {% endblock %}
     </div>
 </body>
 </html>
