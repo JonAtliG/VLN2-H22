@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 </head>
 <body>
     {% include 'navigation.html' %}
 
-    <img id="cartprogress" src="/backup/images/progress1.png" alt="">
+    <img class='cartprogress' src="{% static "/img/progress1.png" %}" >
+
 
     <div class = 'contacts'>
     <button class = 'savedcontact'>
@@ -23,8 +23,9 @@
         <p> {{ user.user.City }} </p>
         <p> {{ user.user.Country }} </p>
     </button>
+
     <button class = 'newcontact'>
-        <p>Change Address</p>
+        Change Address
     </button>
     </div>
 </body>
