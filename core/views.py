@@ -113,6 +113,10 @@ def cart_index(request):
 def home_index(request):
     return render(request, 'home.html')
 
+def contact_index(request):
+    return render(request, 'payment/contact.html')
+
+
 
 #def create_pizza(request):
 #    if request.method == 'POST':
