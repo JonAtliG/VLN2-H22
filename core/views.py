@@ -129,6 +129,7 @@ def create_pizza_index(request):
         'form': form
     })
 
+
 def input_card_info(request):
     if request.method == 'POST':
         form = PaymentForm(data=request.POST)
@@ -137,7 +138,9 @@ def input_card_info(request):
             return redirect('order_confirm_index')
     form = PaymentForm()
     form.set_user(request.user.id)
-    return render(request, 'payment/payment.html')
+    return render(request, 'payment/payment.html', {
+        'form': form
+    })
 
 @login_required(login_url='login-index')
 def saved_menu_index(request):

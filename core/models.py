@@ -14,11 +14,12 @@ class User(BaseUserClass):
     Postal_Code = models.IntegerField(null=True, blank=True)
     City = models.CharField(null=True, blank=True, max_length=255)
 
+
 class PaymentMethod(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    Card_Number = models.IntegerField(null=True,blank=True)
-    Exp_Date = models.DateField(null=True,blank=True)
-    Cvc = models.IntegerField(null=True,blank=True)
+    Card_Number = models.IntegerField(null=True, blank=True)
+    Exp_Date = models.DateField(null=True, blank=True)
+    Cvc = models.IntegerField(null=True, blank=True)
 
 
 class Pizza(models.Model):

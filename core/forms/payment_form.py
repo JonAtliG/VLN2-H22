@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from core.models import PaymentMethod
 from django.forms import ModelForm, widgets
 
+
 class PaymentForm(ModelForm):
     class Meta:
         model = PaymentMethod
