@@ -15,7 +15,7 @@
     <img class='cartprogress' src="{% static "/img/progress1.png" %}" >
 
 
-    <div class = 'contacts'>
+    <a href="{% url 'payment-index' %}">
     <button class = 'savedcontact'>
         <p> {{ user.user.first_name }} {{ user.user.last_name }} </p>
         <p> {{ user.user.Phone_Number }} </p>
@@ -23,10 +23,14 @@
         <p> {{ user.user.City }} </p>
         <p> {{ user.user.Country }} </p>
     </button>
+    </a>
 
-    <button class = 'newcontact'>
-        Change Address
+
+    <a href="{% url 'profile-index' %}">
+    <button>
+        Edit Address
     </button>
-    </div>
+        </a>
+
 </body>
 </html>
