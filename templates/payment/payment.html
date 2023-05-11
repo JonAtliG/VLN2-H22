@@ -11,6 +11,9 @@
 </head>
 <body>
     {% include 'navigation.html' %}
+
+    <img class='cartprogress' src="{% static "/img/progress2.png" %}" >
+
     <div class="payment_body">
         <h1>Payment Information</h1>
         {% block content %}
@@ -22,6 +25,15 @@
             </form>
             </div>
         {% endblock %}
+
+    <a href="{% url 'contact_index' %}">
+    <button class = 'alt_interactions'>
+        Back to the contact screen
+    </button>
+        </a>
     </div>
+
+
+
 </body>
 </html>
