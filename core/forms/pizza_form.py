@@ -3,6 +3,11 @@ from core.models import Pizza
 
 
 class PizzaCreateForm(ModelForm):
+
+    def __init__(self, user_id=None, *args, **kwargs):
+        super(PizzaCreateForm, self).__init__(*args, **kwargs)
+        self.initial['User'] = user_id
+
     class Meta:
         model = Pizza
         exclude = ['id', 'img']
@@ -39,3 +44,4 @@ class PizzaCreateForm(ModelForm):
 
     def sauce(self):
         return [self['Pizza_Sauce'], self['Mozzarella'], self['Pepper_Cheese'], self['Yellow_Cheese']]
+

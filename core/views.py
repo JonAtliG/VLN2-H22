@@ -65,15 +65,17 @@ def offers_index(request):
 @login_required(login_url='login-index')
 def create_pizza_index(request):
     if request.method == 'POST':
-        form = PizzaCreateForm(data=request.POST)
+        form = PizzaCreateForm(user_id=request.user.id, data=request.POST)
         if form.is_valid():
             for f in form:
                 print(f.name, f.value())
-            form.User = request.user
             form.save()
             return redirect('saved-menu-index')
+    form = PizzaCreateForm(user_id=request.user.id)
+    for f in form:
+        print(f.name, f.value(), "boi")
     return render(request, 'menu/create_pizza.html', {
-        'form': PizzaCreateForm()
+        'form': form
     })
 
 
