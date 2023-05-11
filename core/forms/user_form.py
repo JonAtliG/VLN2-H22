@@ -10,7 +10,7 @@ class Create_Account_Form(UserCreationForm):
     Phone_Number = forms.CharField(validators=[phone_regex], max_length=8)
     class Meta:
         model = User
-        fields = ['username', 'email', 'first_name', 'Phone_Number', 'password1', 'password2']
+        fields = ['username', 'email', 'first_name', 'last_name', 'Phone_Number', 'password1', 'password2']
         help_texts = {
             'password2': None,
             'username': None,

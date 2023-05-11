@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path('', views.home_index, name="home-index"),
@@ -10,6 +10,7 @@ urlpatterns = [
 
     path('account/', views.account_index, name="account-index"),
     path('account/login', LoginView.as_view(template_name="account/login_screen.html"), name='login'),
+    path('account/logout', LogoutView.as_view(next_page='login'), name='logout'),
     path('account/login', views.account_login_index, name="login-index"),
     path('account/create', views.account_create_index, name="create-index"),
 
