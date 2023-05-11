@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="stylebackup.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 </head>
 <body>
     {% include 'navigation.html' %}
 
-    <img id="order_confirm" src="/backup/images/ConfirmOrder.png" alt="">
+    <img id='order_confirm' src="{% static "/img/ConfirmOrder.png" %}" >
     <p id="order_confirmed">Order Confirmed</p>
     <p id="ETA">Estimated Time: 15 minutes</p>
