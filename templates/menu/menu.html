@@ -34,7 +34,7 @@
                             <p id="menuName">{{ side.name }}</p>
                             <img src={{ side.img }} alt="">
                             <p id="itemDescription">{{ side.desc }}</p>
-                            <button id="addToCart">
+                            <button id="addToCart" onclick="addToCart({{ side.id }})">
                                 <img src="{% static '/img/CartPhoto.png' %}">
                                 </button>
                             <p id="price">{{ side.price }}$</p>
@@ -54,7 +54,7 @@
                             <p id="menuName">{{ drink.name }}</p>
                             <img src={{ drink.img }} alt="">
                             <p id="itemDescription">{{ drink.desc }}</p>
-                            <button id="addToCart">
+                            <button id="addToCart" onclick="addToCart({{ drink.id }})">
                                 <img src="{% static '/img/CartPhoto.png' %}">
                                 </button>
                             <p id="price">{{ drink.price }}$</p>
