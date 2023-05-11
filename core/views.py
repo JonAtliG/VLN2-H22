@@ -33,15 +33,11 @@ def account_index(request):
 def profile_index(request):
     profile_man = User.objects.get(pk=request.user.id)
     if request.method == 'POST':
-        print(1)
         form = ProfileForm(instance=profile_man, data=request.POST)
         if form.is_valid():
             profile_man.save()
             return redirect('menu-index')
-    print(profile_man.id)
     form = ProfileForm(instance=profile_man)
-    for f in form:
-        print(f.name, f.value())
     return render(request, 'account/account.html', {
         'form': form
         })
