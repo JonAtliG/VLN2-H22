@@ -215,7 +215,8 @@ def contact_index(request):
 def payment_index(request):
     return render(request, 'payment/payment.html')
 
-def order_confirm_infex(request):
+
+def order_confirm_index(request):
     return render(request, 'payment/order_confirm.html')
 
 
