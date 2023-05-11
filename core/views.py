@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from core.models import Pizza, User, Side, Drink
+from core.models import Pizza, User, Side, Drink, Profile
 from core.forms.pizza_form import PizzaCreateForm
-from core.forms.user_form import Create_Account_Form
+from core.forms.user_form import Create_Account_Form, ProfileForm
 
 
 def __get_pizza_list(queryset):
@@ -28,12 +28,19 @@ def account_index(request):
     return render(request, 'account/account.html')
 
 
-#def profile(request):
-#    profile = User.objects.filter(user=request.user).first()
-#    if request.method == 'POST':
-#        print(1)
-#    return render(request, 'account/account.html')
-#        'form'
+def profile(request):
+    profile_man = Profile.objects.filter(user=request.user).first()
+    if request.method == 'POST':
+        print(1)
+        form = ProfileForm(instance=profile_man, data=request.POST)
+        if form.is_valid():
+            profile_man = form.save(commit=False)
+            profile_man.user = request.user
+            profile_man.save()
+            return redirect('menu-index')
+    return render(request, 'account/account.html'), {
+        'form': ProfileForm(instance=profile_man)
+    }
 
 
 def account_login_index(request):

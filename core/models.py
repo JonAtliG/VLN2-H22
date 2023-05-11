@@ -8,6 +8,10 @@ class User(BaseUserClass):
     Profile_picture = models.CharField(max_length=9999)
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_image = models.CharField(max_length=9999)
+
 class Pizza(models.Model):
     User = models.ForeignKey(BaseUserClass, blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
