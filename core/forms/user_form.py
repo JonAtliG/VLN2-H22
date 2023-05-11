@@ -1,13 +1,15 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import RegexValidator
-from core.models import User
+from core.models import User, Profile
 from django.forms import ModelForm, widgets
+
 
 class Create_Account_Form(UserCreationForm):
     email = forms.EmailField
     phone_regex = RegexValidator(regex=r'^\+?1?\d{8,8}$', message='Phone number')
     Phone_Number = forms.CharField(validators=[phone_regex], max_length=8)
+
     class Meta:
         model = User
         fields = ['username', 'email', 'first_name', 'last_name', 'Phone_Number', 'password1', 'password2']
@@ -16,10 +18,12 @@ class Create_Account_Form(UserCreationForm):
             'username': None,
         }
 
+
 class ProfileForm(ModelForm):
     class Meta:
-        model = User
-        exclude = [ 'id', 'user']
+        model = Profile
+        exclude = ['id', 'user']
         widgets = {
-            'profile_image': widgets.TextInput(attrs={'class': 'form-control'})
+            'Phone_Number': widgets.TextInput(attrs={'class': 'form-control'}),
+            'Profile_Image': widgets.TextInput(attrs={'class': 'form-control'})
         }
