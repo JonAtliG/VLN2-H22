@@ -29,9 +29,6 @@ class ProfileForm(ModelForm):
                    'groups',
                    'user_permissions',
                    'username',
-                   'first_name',
-                   'last_name',
-                   'email',
                    'is_staff',
                    'is_active',
                    'date_joined'
