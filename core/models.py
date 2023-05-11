@@ -2,11 +2,9 @@ from django.db import models
 from dbview.models import DbView
 from django.contrib.auth.models import User as BaseUserClass
 
-
 # Create your models here.
 class User(BaseUserClass):
     Phone_Number = models.IntegerField(blank=False)
-
 
 class Pizza(models.Model):
     User = models.ForeignKey(BaseUserClass, blank=True, null=True, on_delete=models.CASCADE)

@@ -1,7 +1,5 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +8,27 @@
     <link rel="stylesheet" href="stylebackup.css">
 </head>
 <body>
-    {% include 'navigation.html' %}
+    <nav class = "navbar">
+        <ul class="nav_items">
+            <li class="nav_item">
+                <a href="/home.html" class="nav_link">
+                    <img id="nav_img" src="/backup/images/pizza logo.png" alt="">
+                </a>
+            </li>
+            <li class="nav_item">
+                <a href="/pizza_menu.html" class="nav_link">Menu</a>
+            </li>
+            <li class="nav_item">
+                <a href="/special_offer.html" class="nav_link">Special Offers</a>
+            </li>
+            <li class="nav_item">
+                <a href="/cart.html" class="nav_link">Cart</a>
+            </li>
+            <li class="nav_item">
+                <a href="/account.html" class="nav_link">Account</a>
+            </li>
+        </ul>
+    </nav>
 
     <img id="cartprogress" src="/backup/images/progress1.png" alt="">
 
