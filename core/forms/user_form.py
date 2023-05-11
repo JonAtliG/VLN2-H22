@@ -29,14 +29,16 @@ class ProfileForm(ModelForm):
                    'groups',
                    'user_permissions',
                    'username',
-                   'first_name',
-                   'last_name',
-                   'email',
                    'is_staff',
                    'is_active',
                    'date_joined'
                    ]
         widgets = {
             'Phone_Number': widgets.TextInput(attrs={'class': 'form-control'}),
-            'Profile_Image': widgets.TextInput(attrs={'class': 'form-control'})
+            'Profile_Image': widgets.TextInput(attrs={'class': 'form-control'}),
+            'Street_Name': widgets.TextInput(attrs={'class': 'form-control'}),
+            'House_number': widgets.TextInput(attrs={'class': 'form-control'}),
+            'Country': widgets.Select(attrs={'class': 'form-control'}),
+            'Postal_code': widgets.TextInput(attrs={'class': 'form-control'}),
+            'City': widgets.TextInput(attrs={'class': 'form-control'})
         }

@@ -4,13 +4,14 @@
 <div class = 'account_options'>
     {% if user.is_authenticated %}
             <h1>Profile</h1>
-            <form class="form form-horizontal" method="post">
+            <h2>Type to edit</h2>
+            <form id="edit_profile_form" class="form form-horizontal" method="post">
                 {% csrf_token %}
                 {{ form }}
-                <input type="submit" class="btn btn-primary" value="Update">
+                <input id="edit_profile_button" type="submit" class="btn btn-primary" value="Update">
             </form>
         <a href="{% url 'logout' %}">
-        <button id='button_one' onclick="">Log Out</button>
+        <button id='log_out_button' onclick="">Log Out</button>
         </a>
     {% else %}
         <a href="{% url 'login-index' %}">
