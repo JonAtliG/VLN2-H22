@@ -1,6 +1,7 @@
 from django.db import models
 from dbview.models import DbView
 from django.contrib.auth.models import User as BaseUserClass
+from django.contrib.contenttypes import fields
 
 
 class User(BaseUserClass):
@@ -8,13 +9,10 @@ class User(BaseUserClass):
     Profile_picture = models.CharField(max_length=9999)
 
 
-class Product(models.Model):
-    name = models.CharField(max_length=255)
-
-
-class Pizza(Product):
+class Pizza(models.Model):
     User = models.ForeignKey(BaseUserClass, blank=True, null=True, on_delete=models.CASCADE)
     img = models.CharField(max_length=999, blank=True)
+    name = models.CharField(max_length=255)
     Bacon = models.BooleanField(default=False)
     Chicken = models.BooleanField(default=False)
     Ham = models.BooleanField(default=False)
@@ -31,13 +29,15 @@ class Pizza(Product):
     Pizza_Sauce = models.BooleanField(default=False)
 
 
-class Side(Product):
+class Side(models.Model):
+    name = models.CharField(max_length=255)
     img = models.CharField(max_length=999, blank=True)
     desc = models.CharField(max_length=999, blank=True)
     price = models.FloatField()
 
 
-class Drink(Product):
+class Drink(models.Model):
+    name = models.CharField(max_length=255)
     img = models.CharField(max_length=999, blank=True)
     desc = models.CharField(max_length=999, blank=True)
     price = models.FloatField()
@@ -45,7 +45,7 @@ class Drink(Product):
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = fields.GenericForeignKey('content_type', 'object_id')
 
 #
 #class User(models.Model):
