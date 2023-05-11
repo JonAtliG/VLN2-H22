@@ -39,6 +39,13 @@ class Drink(models.Model):
     desc = models.CharField(max_length=999, blank=True)
     price = models.FloatField()
 
+
+class UserPizza(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+
+
+
 #
 #class User(models.Model):
 #    name = models.CharField(max_length=255)

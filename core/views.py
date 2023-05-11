@@ -62,24 +62,24 @@ def menu_index(request):
     pizza_list = __get_pizza_list(Pizza.objects.all().filter(User__isnull=True).values())
     side_object = Side.objects.all().values('name', 'img', 'desc', 'price')
     drink_object = Drink.objects.all().values('name', 'img', 'desc', 'price')
-    return render(request, 'menu/pizza_menu.html', context={'data': {'pizzas': pizza_list,
+    return render(request, 'menu/menu.html', context={'data': {'pizzas': pizza_list,
                                                                      'sides': side_object,
                                                                      'drinks': drink_object}})
 
 
 def pizza_menu_index(request):
     pizza_list = __get_pizza_list(Pizza.objects.all().filter(User__isnull=True).values())
-    return render(request, 'menu/pizza_menu.html', context={'data': {'pizzas': pizza_list}})
+    return render(request, 'menu/menu.html', context={'data': {'pizzas': pizza_list}})
 
 
 def side_menu_index(request):
     side_object = Side.objects.all().values('name', 'img', 'desc', 'price')
-    return render(request, 'menu/pizza_menu.html', context={'data': {'sides': side_object}})
+    return render(request, 'menu/menu.html', context={'data': {'sides': side_object}})
 
 
 def drink_menu_index(request):
     drink_object = Drink.objects.all().values('name', 'img', 'desc', 'price')
-    return render(request, 'menu/pizza_menu.html', context={'data': {'drinks': drink_object}})
+    return render(request, 'menu/menu.html', context={'data': {'drinks': drink_object}})
 
 def cart_index(request):
     return render(request, 'cart.html')
