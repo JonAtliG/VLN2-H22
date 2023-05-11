@@ -80,6 +80,11 @@ const updateMenu = async () => {
             title: "Drinks",
             containerClass: "drink_list_container",
         },
+        {
+            key: "user_pizzas",
+            title: "Saved Pizzas",
+            containerClass: "user_pizza_list_container",
+        },
     ]
     let menuContainer = document.getElementById("menu_container");
     // Using the list to set the order of action
@@ -102,25 +107,5 @@ const updateMenu = async () => {
             menuContainer.appendChild(menuTypeContainer);
             }
     })
-    //if (menuData.pizzas.length > 0) {
-    //    let pizzaListContainer = document.createElement("div");
-    //    pizzaListContainer.classList.add("pizza_list_container");
-    //    let titleContainer = document.createElement("div");
-    //    titleContainer.classList.add("title");
-    //    let title = document.createElement("h1");
-    //    title.textContent = "Pizzas";
-    //    let menu_list = document.createElement("ul");
-    //    menu_list.classList.add("menu_list");
-    //    menuData.pizzas.forEach(pizza => {
-    //        let productElement = getProductElement(pizza);
-    //        menu_list.appendChild(productElement);
-    //    })
-    //    titleContainer.appendChild(title);
-    //    pizzaListContainer.appendChild(titleContainer);
-    //    pizzaListContainer.appendChild(menu_list);
-    //    menuContainer.appendChild(pizzaListContainer);
-    //}
-
-
 };
 

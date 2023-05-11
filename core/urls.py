@@ -18,7 +18,7 @@ urlpatterns = [
     path('custom/create', views.create_pizza_index, name="create-pizza-index"),
 
     path('menu', views.menu_index, name="menu-index"),
-    path('menu/saved', views.saved_menu_index, name="saved-menu-index"),
+    path('menu/saved', views.menu_index, name="saved-menu-index"),
     path('menu/pizzas', views.menu_index, name="pizza-menu-index"),
     path('menu/drinks', views.menu_index, name="drink-menu-index"),
     path('menu/sides', views.menu_index, name="side-menu-index"),
