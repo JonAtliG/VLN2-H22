@@ -9,10 +9,11 @@ class User(BaseUserClass):
     Phone_Number = models.IntegerField(blank=False)
     Profile_picture = models.CharField(max_length=9999)
     Street_Name = models.CharField(max_length=255)
-    House_Number = models.IntegerField(max_length=5)
+    House_Number = models.IntegerField()
     Country = CountryField()
-    Postal_Code = models.IntegerField(max_length=5)
+    Postal_Code = models.IntegerField()
     City = models.CharField(max_length=255)
+
 
 class Pizza(models.Model):
     User = models.ForeignKey(BaseUserClass, blank=True, null=True, on_delete=models.CASCADE)
@@ -50,9 +51,11 @@ class Drink(models.Model):
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = fields.GenericForeignKey('content_type', 'object_id')
+    pizza = models.ForeignKey(Pizza, null=True, on_delete=models.CASCADE)
+    side = models.ForeignKey(Side, null=True, on_delete=models.CASCADE)
+    drink = models.ForeignKey(Drink, null=True, on_delete=models.CASCADE)
 
-#
+
 #class User(models.Model):
 #    name = models.CharField(max_length=255)
 #    email = models.CharField(max_length=255)
