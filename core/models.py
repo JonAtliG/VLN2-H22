@@ -8,11 +8,11 @@ from django_countries.fields import CountryField
 class User(BaseUserClass):
     Phone_Number = models.IntegerField(blank=False)
     Profile_picture = models.CharField(max_length=9999)
-    Street_Name = models.CharField(max_length=255)
-    House_Number = models.IntegerField()
-    Country = CountryField()
-    Postal_Code = models.IntegerField()
-    City = models.CharField(max_length=255)
+    Street_Name = models.CharField(null=True, blank=True, max_length=255)
+    House_Number = models.IntegerField(null=True, blank=True)
+    Country = CountryField(null=True, blank=True)
+    Postal_Code = models.IntegerField(null=True, blank=True)
+    City = models.CharField(null=True, blank=True, max_length=255)
 
 
 class Pizza(models.Model):
