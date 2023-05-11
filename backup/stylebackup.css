@@ -118,30 +118,40 @@ body {
     font-size: 240px;
     margin: 25px;
     width: 2000px;
-    height: 2000px;
+    height: auto;
     margin-top: 50px;
     background-color: #53354A;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
   }
   
   .savedcontact {
+    background-color: #903749;
     width: 1800px;
     height: 500px;
-    background-color: #903749;
-    margin: 0 auto;
-    border-radius: 20px;
+    display: block;
+    position: absolute;
+    font-size: 70px;
+    margin-top: 50px;
   }
 
-  .newcontact {
+  button.newcontact {
     background-color: #E84545;
     width: 1800px;
     height: 500px;
-    margin: 0 auto;
-    margin-top: 50px;
-    border-radius: 20px;
-    font-size: 100px;
-    text-align: center;
+    margin-top: 700px;
+    font-size: 70px;
+  }
 
+  #order_confirm {
+    display: block;
+    margin: auto;
+    position: absolute;
+    margin-top: 500px;
+    left: 0; right: 0;
+    height: 500px;
+    width: 500px;
   }
 
   #contactname {
@@ -150,6 +160,36 @@ body {
     font-size: 80px;
     text-align: center;
     color: #FFFFFF;
+  }
+
+  #order_confirmed {
+    position: absolute;
+    margin: auto;
+    top: 0; bottom: 0; left: 0; right: 0;
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 800;
+    font-size: 96px;
+    line-height: 116px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 200px;
+
+  }
+
+  #ETA {
+    position: absolute;
+    margin: auto;
+    top: 0; bottom: 0; left: 0; right: 0;
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 800;
+    font-size: 45px;
+    line-height: 39px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 1200px;
+
   }
 
   #contactinfo {
