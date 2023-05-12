@@ -20,6 +20,9 @@ Our assignment was to create a fully functional pizza ordering website
 for users. We were given function and structural demands to implement
 into the website. We worked together through a respo in GitHub.
 
+GitHub link:
+https://github.com/JonAtliG/VLN2-H22
+
 Languages:
 HTML
 CSS
