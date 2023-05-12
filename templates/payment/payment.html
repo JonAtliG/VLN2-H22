@@ -20,7 +20,10 @@
             <div class="payment_info">
             <form id="payment_info" class="form form-horizontal" method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form.user.as_hidden }}
+                {{ form.Card_Number.as_widget }}
+                {{ form.Exp_Date.as_widget }}
+                {{ form.Cvc.as_widget }}
                 <input id="conf_payment_button" type="submit" class="btn btn-primary" value="Confirm">
             </form>
             </div>

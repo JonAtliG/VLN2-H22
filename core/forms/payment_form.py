@@ -14,8 +14,9 @@ class PaymentForm(ModelForm):
        # card_number_validator = MaxLengthValidator(19, message="Card number must be at most 19 digits.")
 
         model = PaymentMethod
-        exclude = ['id', 'User']
+        exclude = ['id']
         widgets = {
+            'User': widgets.NumberInput(attrs={'class': 'user_id'}),
             'Card_Number': widgets.TextInput(attrs={'class': 'form-control'}),
             'Exp_Date': widgets.TextInput(attrs={'class': 'form-control'}),
             'Cvc': widgets.TextInput(attrs={'class': 'form-control'})
@@ -24,6 +25,7 @@ class PaymentForm(ModelForm):
         #    'Card_Number': [card_number_validator],
         #    'Cvc': [cvc_validator]
         #}
+
     def set_user(self, user_id):
         self.initial['User'] = user_id
 
