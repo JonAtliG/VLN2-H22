@@ -157,6 +157,8 @@ def input_card_info(request):
 
 
 def menu_index(request):
+    if request.method == 'POST':
+        print(request.user.id)
     if request.user.is_authenticated:
         user_pizzas = Pizza.objects.all().filter(User=request.user)
     else:

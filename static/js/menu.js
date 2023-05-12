@@ -128,3 +128,16 @@ const setFilter = async (key) => {
     await updateMenu();
 }
 
+
+//function formSubmit(event) {
+//  let url = "/menu"
+//  let request = new XMLHttpRequest();
+//  request.open('POST', url, true);
+//  request.onload = function() {
+//    console.log(request.responseText);
+//  };
+//  request.onerror = function() {
+//  };
+//  request.send(new FormData(event.target));
+//  event.preventDefault();
+//}
