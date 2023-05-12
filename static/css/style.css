@@ -365,8 +365,9 @@ body {
     font-weight: 800;
 }
 
-#ETA {
-
+#cartpageinfo {
+    font-size: 20px;
+    text-align: center;
 }
 
 /* Account html */
