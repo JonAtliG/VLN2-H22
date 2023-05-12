@@ -16,6 +16,7 @@
     <img class='cartprogress' src="{% static "/img/progress1.png" %}" >
 
     <div class = 'contacts_body'>
+        <h1 id="cartform">Contact Information</h1>
         <a href="{% url 'payment_index' %}">
         <button class = 'savedcontact'>
         <p class = "contactname"> {{ user.user.first_name }} {{ user.user.last_name }} </p>
