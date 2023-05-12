@@ -1,5 +1,6 @@
 let menuData = null;
-let activeMap = {"pizzas": true, "sides": true, "drinks": true, "user_pizzas": true}
+let activeMap = {"pizzas": true, "sides": true, "drinks": true, "user_pizzas": true};
+let offer_3_for_2 = [null, null, null];
 
 window.onload = function () {
     let jsonElement = document.getElementById("jsonData");
@@ -132,16 +133,22 @@ const setFilter = async (key) => {
     await updateMenu();
 }
 
-
-//function formSubmit(event) {
-//  let url = "/menu"
-//  let request = new XMLHttpRequest();
-//  request.open('POST', url, true);
-//  request.onload = function() {
-//    console.log(request.responseText);
-//  };
-//  request.onerror = function() {
-//  };
-//  request.send(new FormData(event.target));
-//  event.preventDefault();
-//}
+const set3For2Pizza = async (id, name) => {
+    let pizzaElements = [
+        document.getElementById("pizza_1"),
+        document.getElementById("pizza_2"),
+        document.getElementById("pizza_3")
+    ]
+    for (let i = 0; i < offer_3_for_2.length; i++) {
+        if (offer_3_for_2[i] == null) {
+            offer_3_for_2[i] = id;
+            pizzaElements[i].textContent = name;
+            pizzaElements[i].classList.add("selected");
+            break;
+        }
+    }
+    if (!(offer_3_for_2[2] === null)) {
+        let button = document.getElementById("save_offer_button");
+        button.href = "/cart/"+offer_3_for_2[0].toString()+"/"+offer_3_for_2[1].toString()+"/"+offer_3_for_2[2].toString();
+    }
+}

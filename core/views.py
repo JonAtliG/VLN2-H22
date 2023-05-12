@@ -1,13 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from core.models import Pizza, User, Side, Drink, Cart
+from core.models import Pizza, User, Side, Drink, Cart, Offer3For2
 from core.forms.pizza_form import PizzaCreateForm
 from core.forms.user_form import Create_Account_Form, ProfileForm
 from core.forms.payment_form import PaymentForm
 import json
 
 
-def __get_menu_json_object(pizza_query, side_query, drink_query, user_pizza_query):
+def __get_menu_json_object(pizza_query, side_query, drink_query, user_pizza_query, offer_id=None):
     json_data = json.dumps(
         [
             {
@@ -75,6 +75,7 @@ def __get_menu_json_object(pizza_query, side_query, drink_query, user_pizza_quer
                         'price': drink.price
                     } for drink in drink_query
                 ],
+                'active_offer': offer_id
             }
         ]
     )
@@ -153,15 +154,8 @@ def input_card_info(request):
         'form': form
     })
 
-#@login_required(login_url='login-index')
-#def saved_menu_index(request):
-#    pizza_list = __get_pizza_list(Pizza.objects.filter(User=request.user).values())
-#    return render(request, 'menu/menu.html', context={'data': {'pizzas': pizza_list}})
-
 
 def menu_index(request):
-    if request.method == 'POST':
-        print(request.user.id)
     if request.user.is_authenticated:
         user_pizzas = Pizza.objects.all().filter(User=request.user)
     else:
@@ -176,24 +170,23 @@ def menu_index(request):
     return render(request, 'menu/menu.html', context={'data': context_data})
 
 
-#def pizza_menu_index(request):
-#    # pizza_list = __get_pizza_list(Pizza.objects.all().filter(User__isnull=True).values())
-#    data = __get_menu_json_object(pizza_query=Pizza.objects.all().filter(User__isnull=True))
-#    return render(request, 'menu/menu.html', context={'data': data})
-#
-#
-#def side_menu_index(request):
-#    side_object = Side.objects.all().values('name', 'img', 'desc', 'price')
-#    return render(request, 'menu/menu.html', context={'data': {'sides': side_object}})
-#
-#
-#def drink_menu_index(request):
-#    drink_object = Drink.objects.all().values('name', 'img', 'desc', 'price')
-#    return render(request, 'menu/menu.html', context={'data': {'drinks': drink_object}})
+def menu_select_offer_index(request, offer_id):
+    if request.user.is_authenticated:
+        user_pizzas = Pizza.objects.all().filter(User=request.user)
+    else:
+        user_pizzas = []
+    pizzas = Pizza.objects.all().filter(User__isnull=True)
+    context_data = __get_menu_json_object(pizza_query=pizzas,
+                                          side_query=[],
+                                          drink_query=[],
+                                          user_pizza_query=user_pizzas,
+                                          offer_id=offer_id,)
+    return render(request, 'menu/3_for_2_menu.html', context={'data': context_data})
 
 
 def cart_index(request):
     return render(request, 'cart.html')
+
 
 
 @login_required(login_url='login-index')
@@ -204,10 +197,23 @@ def add_to_cart_index(request, typeid, objectid):
     elif typeid == 1:
         cart_item = Cart(user_id=request.user.id, side_id=objectid)
     else:
-        cart_item= Cart(user_id=request.user.id, drink_id=objectid)
+        cart_item = Cart(user_id=request.user.id, drink_id=objectid)
+    #else:
+    #    cart_item = Cart(user_id=request.user.id, offer_3_for_2=objectid)
     cart_item.save()
     return redirect('menu-index')
 
+
+@login_required(login_url='login-index')
+def add_offer_to_cart_index(request, pizza1id, pizza2id, pizza3id):
+    offer = Offer3For2()
+    offer.pizza1 = pizza1id
+    offer.pizza2 = pizza2id
+    offer.pizza3 = pizza3id
+    offer.save()
+    cart = Cart(user_id=request.user.id, offer_3_for_2=offer.id)
+    cart.save()
+    return redirect('cart-index')
 
 
 def home_index(request):
@@ -227,14 +233,3 @@ def order_confirm_index(request):
     return render(request, 'payment/order_confirm.html')
 
 
-
-#def create_pizza(request):
-#    if request.method == 'POST':
-#        form = create_pizza(data=request.POST)
-#        if form.is_valid():
-#            pizza = form.save()
-#        else:
-#            form = PizzaCreateCustom()
-#    return render(request, 'pizza/create_pizza.html', {
-#        'form': form
-# })

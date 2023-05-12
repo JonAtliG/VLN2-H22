@@ -58,11 +58,19 @@ class Drink(models.Model):
     price = models.FloatField()
 
 
+class Offer3For2(models.Model):
+    user = models.ForeignKey(BaseUserClass, on_delete=models.CASCADE)
+    pizza1 = models.ForeignKey(Pizza, related_name='%(class)s_pizza_1', on_delete=models.CASCADE)
+    pizza2 = models.ForeignKey(Pizza, related_name='%(class)s_pizza_2', on_delete=models.CASCADE)
+    pizza3 = models.ForeignKey(Pizza, related_name='%(class)s_pizza_3', on_delete=models.CASCADE)
+
+
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     pizza = models.ForeignKey(Pizza, null=True, on_delete=models.CASCADE)
     side = models.ForeignKey(Side, null=True, on_delete=models.CASCADE)
     drink = models.ForeignKey(Drink, null=True, on_delete=models.CASCADE)
+    offer_3_for_2 = models.ForeignKey(Offer3For2, null=True, on_delete=models.CASCADE)
 
 
 #class User(models.Model):

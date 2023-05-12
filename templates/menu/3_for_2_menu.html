@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% include 'menu/3_for_2_navigation.html' %}
+    <div style="display: none" id="jsonData" data-json="{{ data }}"></div>
+    <script src="{% static 'js/menu.js' %}"></script>
+    <div id="menu_container" class="menu_container">
+    </div>
+{% endblock %}
