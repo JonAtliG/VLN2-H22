@@ -7,8 +7,8 @@ from django.forms import ModelForm, widgets
 
 class Create_Account_Form(UserCreationForm):
     email = forms.EmailField
-    phone_regex = RegexValidator(regex=r'^\+?1?\d{8,8}$', message='Phone number')
-    Phone_Number = forms.CharField(validators=[phone_regex], max_length=8)
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{7,10}$', message='Phone number')
+    Phone_Number = forms.CharField(validators=[phone_regex], max_length=10)
 
     class Meta:
         model = User
