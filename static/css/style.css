@@ -220,6 +220,7 @@ body {
     background-color: #903749;
     font-size: 50px;
     width: 70%;
+    height: auto;
     margin-top: 1%;
     margin-left: 15%;
     display: inline-block;
