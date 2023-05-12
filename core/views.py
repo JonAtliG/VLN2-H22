@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from core.models import Pizza, User, Side, Drink
+from core.models import Pizza, User, Side, Drink, Cart
 from core.forms.pizza_form import PizzaCreateForm
 from core.forms.user_form import Create_Account_Form, ProfileForm
 from core.forms.payment_form import PaymentForm
@@ -191,6 +191,20 @@ def menu_index(request):
 
 def cart_index(request):
     return render(request, 'cart.html')
+
+
+@login_required(login_url='login-index')
+def add_to_cart_index(request, typeid, objectid):
+    print(objectid)
+    if typeid == 0:
+        cart_item = Cart(user_id=request.user.id, pizza_id=objectid)
+    elif typeid == 1:
+        cart_item = Cart(user_id=request.user.id, side_id=objectid)
+    else:
+        cart_item= Cart(user_id=request.user.id, drink_id=objectid)
+    cart_item.save()
+    return redirect('menu-index')
+
 
 
 def home_index(request):

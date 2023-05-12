@@ -25,7 +25,7 @@ function getPizzaDescriptionPrice (toppings) {
     return {"desc": description, "price": (6.99+toppingList.length).toString()}
 }
 
-function getProductElement (productObject) {
+function getProductElement (productObject, carturl) {
     let product = document.createElement("li");
     product.classList.add("menuitem");
     let product_name = document.createElement("p");
@@ -39,11 +39,11 @@ function getProductElement (productObject) {
     }
     let productDescription = document.createElement("p")
     productDescription.id = "itemDescription"
-    let cartButton = document.createElement("button")
+    let cartButton = document.createElement("a")
     cartButton.id = "addToCart"
+    cartButton.href = carturl+productObject.id.toString()
     let cartImg = document.createElement("img")
     cartImg.src = "/static/img/CartPhoto.png"
-    //cartButton.onclick =
     let productPrice = document.createElement("p")
     productPrice.id = "price"
     //Pizzas have undefined description
@@ -69,22 +69,26 @@ const updateMenu = async () => {
         {
             key: "pizzas",
             title: "Sewer Pizzas",
-            containerClass: "pizza_list_container"
+            containerClass: "pizza_list_container",
+            cartURL: "/cart/0/",
         },
         {
             key: "sides",
             title: "Sewer Sides",
             containerClass: "side_list_container",
+            cartURL: "/cart/1/",
         },
         {
             key: "drinks",
             title: "Drinks",
             containerClass: "drink_list_container",
+            cartURL: "/cart/2/",
         },
         {
             key: "user_pizzas",
             title: "Saved Pizzas",
             containerClass: "user_pizza_list_container",
+            cartURL: "/cart/0/",
         },
     ]
     let menuContainer = document.getElementById("menu_container");
@@ -108,7 +112,7 @@ const updateMenu = async () => {
                         menuList.appendChild(getProductElement(product))
                     }
                 } else {
-                    menuList.appendChild(getProductElement(product));
+                    menuList.appendChild(getProductElement(product, menuType.cartURL));
                 }
             })
             titleContainer.appendChild(title);

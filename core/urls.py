@@ -5,6 +5,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 urlpatterns = [
     path('', views.home_index, name="home-index"),
     path('cart', views.cart_index, name="cart-index"),
+    path('cart/<int:typeid>/<int:objectid>', views.add_to_cart_index, name="add-pizza-index"),
 
     path('offers', views.offers_index, name="offers-index"),
 
