@@ -1,7 +1,6 @@
 from django.db import models
 from dbview.models import DbView
 from django.contrib.auth.models import User as BaseUserClass
-from django.contrib.contenttypes import fields
 from django_countries.fields import CountryField
 
 
@@ -18,7 +17,6 @@ class User(BaseUserClass):
 class PaymentMethod(models.Model):
     User = models.ForeignKey(BaseUserClass, on_delete=models.CASCADE)
     Card_Number = models.CharField(max_length=16)
-    #Card_Number = models.IntegerField()
     Exp_Month = models.IntegerField()
     Exp_Year = models.IntegerField()
     Cvc = models.IntegerField()
