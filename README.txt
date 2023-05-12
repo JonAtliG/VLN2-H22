@@ -34,4 +34,6 @@ Required imports:
 Django
 dbview
 
+Programming Rules:
+
 
