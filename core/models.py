@@ -43,6 +43,22 @@ class Pizza(models.Model):
     Yellow_Cheese = models.BooleanField(default=False)
     Pizza_Sauce = models.BooleanField(default=False)
 
+    def toppings(self):
+        return {'Bacon': self.Bacon,
+                'Chicken': self.Chicken,
+                'Ham': self.Ham,
+                'Pepperoni': self.Pepperoni,
+                'Jalapeno': self.Jalapeno,
+                'Mushrooms':self.Mushrooms,
+                'Onion': self.Onion,
+                'Paprika': self.Paprika,
+                'Pineapple': self.Pineapple,
+                'Cheese': self.Cheese,
+                'Mozzarella': self.Mozzarella,
+                'Pepper_Cheese': self.Pepper_Cheese,
+                'Yellow_Cheese': self.Yellow_Cheese,
+                'Pizza_Sauce': self.Pizza_Sauce}
+
 
 class Side(models.Model):
     name = models.CharField(max_length=255)

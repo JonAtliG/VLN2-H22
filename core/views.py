@@ -81,6 +81,23 @@ def __get_menu_json_object(pizza_query, side_query, drink_query, user_pizza_quer
     )
     return json_data
 
+def __get_pizza_price_and_description(pizza):
+    topping_list = []
+    pizza_toppings = pizza.toppings()
+    keys = ['Bacon', 'Chicken', 'Ham', 'Pepperoni', 'Jalapeno', 'Mushrooms', 'Onion', 'Paprika',
+            'Pineapple', 'Cheese', 'Mozzarella', 'Pepper_Cheese', 'Yellow_Cheese', 'Pizza_Sauce']
+    for key in keys:
+        if pizza_toppings[key]:
+            topping_list.append(key.replace("_", " "))
+    if len(topping_list) > 1:
+        desc = ", ".join(topping_list[:-1])+ " and " + topping_list[-1]
+    else:
+        desc = "" if len(topping_list) == 0 else topping_list[0]
+    price = 6.99 + len(topping_list)
+    return desc, price
+
+
+
 
 def account_index(request):
     if request.user.is_authenticated:
@@ -93,8 +110,6 @@ def profile_index(request):
     if request.method == 'POST':
         form = ProfileForm(instance=profile_man, data=request.POST)
         if form.is_valid():
-            for f in form:
-                print(f.name, f.value())
             profile_man.save()
             return redirect('menu-index')
     form = ProfileForm(instance=profile_man)
@@ -148,8 +163,6 @@ def input_card_info(request):
             print(form.errors)
     form = PaymentForm()
     form.set_user(request.user.id)
-    print(form['User'].value())
-    print(request.user.id)
     return render(request, 'payment/payment.html', {
         'form': form
     })
@@ -184,9 +197,28 @@ def menu_select_offer_index(request, offerid):
     return render(request, 'menu/3_for_2_menu.html', context={'data': context_data})
 
 
+@login_required(login_url='login-index')
 def cart_index(request):
-    return render(request, 'cart.html')
-
+    cart = Cart.objects.all().filter(user_id=request.user.id)
+    items = []
+    for item in cart:
+        if item.pizza_id is not None:
+            pizza = Pizza.objects.get(pk=item.pizza_id)
+            desc, price = __get_pizza_price_and_description(pizza)
+            items.append({'name': pizza.name, 'desc': desc, 'price': price})
+        elif item.side_id is not None:
+            side = Side.objects.get(pk=item.side_id)
+            items.append({'name': side.name, 'desc': side.desc, 'price': side.price})
+        elif item.drink_id is not None:
+            drink = Drink.objects.get(pk=item.drink_id)
+            items.append({'name': drink.name, 'desc': drink.desc, 'price': drink.price})
+        else:
+            offer = Offer3For2.objects.get(pk=item.offer_3_for_2_id)
+            pizza1 = Pizza.objects.get(pk=offer.pizza1_id)
+            pizza2 = Pizza.objects.get(pk=offer.pizza1_id)
+            pizza3 = Pizza.objects.get(pk=offer.pizza1_id)
+            items.append({'name': "3 for 2 offer", 'desc': f"{pizza1.name}, {pizza2.name}, {pizza3.name}", 'price': 34.99})
+    return render(request, 'cart.html', context={'data': items})
 
 
 @login_required(login_url='login-index')
@@ -198,8 +230,6 @@ def add_to_cart_index(request, typeid, objectid):
         cart_item = Cart(user_id=request.user.id, side_id=objectid)
     else:
         cart_item = Cart(user_id=request.user.id, drink_id=objectid)
-    #else:
-    #    cart_item = Cart(user_id=request.user.id, offer_3_for_2=objectid)
     cart_item.save()
     return redirect('menu-index')
 
@@ -207,11 +237,12 @@ def add_to_cart_index(request, typeid, objectid):
 @login_required(login_url='login-index')
 def add_offer_to_cart_index(request, pizza1id, pizza2id, pizza3id):
     offer = Offer3For2()
-    offer.pizza1 = pizza1id
-    offer.pizza2 = pizza2id
-    offer.pizza3 = pizza3id
+    offer.user_id = request.user.id
+    offer.pizza1_id = pizza1id
+    offer.pizza2_id = pizza2id
+    offer.pizza3_id = pizza3id
     offer.save()
-    cart = Cart(user_id=request.user.id, offer_3_for_2=offer.id)
+    cart = Cart(user_id=request.user.id, offer_3_for_2_id=offer.id)
     cart.save()
     return redirect('cart-index')
 
@@ -230,6 +261,8 @@ def payment_index(request):
 
 
 def order_confirm_index(request):
+    Cart.objects.all().filter(user_id=request.user.id).delete()
+    Offer3For2.objects.all().filter(user_id=request.user.id).delete()
     return render(request, 'payment/order_confirm.html')
 
 
