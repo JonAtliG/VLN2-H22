@@ -137,6 +137,7 @@ def input_card_info(request):
     if request.method == 'POST':
         form = PaymentForm(data=request.POST)
         if form.is_valid():
+            print(1)
             form.save()
             return redirect('order_confirm_index')
     form = PaymentForm()
