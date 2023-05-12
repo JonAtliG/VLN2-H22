@@ -92,6 +92,8 @@ def profile_index(request):
     if request.method == 'POST':
         form = ProfileForm(instance=profile_man, data=request.POST)
         if form.is_valid():
+            for f in form:
+                print(f.name, f.value())
             profile_man.save()
             return redirect('menu-index')
     form = ProfileForm(instance=profile_man)
@@ -136,11 +138,14 @@ def create_pizza_index(request):
 def input_card_info(request):
     if request.method == 'POST':
         form = PaymentForm(data=request.POST)
+        print(form['User'].value())
         if form.is_valid():
             form.save()
             return redirect('order_confirm_index')
     form = PaymentForm()
     form.set_user(request.user.id)
+    print(form['User'].value())
+    print(request.user.id)
     return render(request, 'payment/payment.html', {
         'form': form
     })

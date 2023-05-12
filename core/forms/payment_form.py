@@ -17,9 +17,9 @@ class PaymentForm(ModelForm):
         exclude = ['id']
         widgets = {
             'User': widgets.NumberInput(attrs={'class': 'user_id'}),
-            'Card_Number': widgets.TextInput(attrs={'class': 'form-control'}),
-            'Exp_Date': widgets.TextInput(attrs={'class': 'form-control'}),
-            'Cvc': widgets.TextInput(attrs={'class': 'form-control'})
+            'Card_Number': widgets.NumberInput(attrs={'class': 'form-control'}),
+            'Exp_Date': widgets.NumberInput(attrs={'class': 'form-control'}),
+            'Cvc': widgets.NumberInput(attrs={'class': 'form-control'})
         }
         #validators = {
         #    'Card_Number': [card_number_validator],
@@ -28,4 +28,7 @@ class PaymentForm(ModelForm):
 
     def set_user(self, user_id):
         self.initial['User'] = user_id
+
+    def user(self):
+        return self['User']
 

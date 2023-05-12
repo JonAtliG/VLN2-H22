@@ -18,7 +18,7 @@
         <h1>Payment Information</h1>
         {% block content %}
             <div class="payment_info">
-            <form id="payment_info" class="form form-horizontal" method="post">
+            <form id="payment_info" class="form form-horizontal" action="{% url 'payment_index' %}" method="post">
                 {% csrf_token %}
                 {{ form.user.as_hidden }}
                 {{ form.Card_Number.as_widget }}
