@@ -587,3 +587,9 @@ body {
     width: 20%;
     margin-left: 40%;
 }
+
+.back_home_button{
+    width: 20%;
+    margin-left: 40%;
+    background-color: #E84545;
+}
