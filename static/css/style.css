@@ -338,12 +338,7 @@ body {
     width: 15%;
     height: 15%;
 }
-#order_confirm {
-    margin-top: 5%;
-    width: 40%;
-    margin-left: 30%;
-    margin-top: 10%;
-  }
+
 
 #order_confirmed {
     text-align: center;
@@ -576,4 +571,19 @@ body {
     margin-left: 40%;
     margin-top: 50%;
     width: 15%;
+}
+
+.ord_confirm_body{
+    margin-top: 2%;
+    margin-right: auto;
+    margin-left: auto;
+    width: 70%;
+    height: 800px;
+    background-color: #53354A;
+    border-radius: 15px;
+}
+
+#order_confirm{
+    width: 20%;
+    margin-left: 40%;
 }

@@ -11,15 +11,16 @@
 </head>
 <body>
     {% include 'navigation.html' %}
+    <div class="ord_confirm_body">
+        <img id='order_confirm' src="{% static "/img/ConfirmOrder.png" %}" >
+        <p id="order_confirmed">Order Confirmed</p>
+        <p id="order_confirmed">Estimated Time: 15 minutes</p>
 
-    <img id='order_confirm' src="{% static "/img/ConfirmOrder.png" %}" >
-    <p id="order_confirmed">Order Confirmed</p>
-    <p id="order_confirmed">Estimated Time: 15 minutes</p>
-
-    <a href="{% url 'home-index' %}">
-    <button class = 'alt_interactions'>
-        Back to the home screen
-    </button>
-
+        <a href="{% url 'home-index' %}">
+        <button class = 'alt_interactions'>
+            Back to the home screen
+        </button>
+        </a>
+    </div>
 </body>
 </html>
