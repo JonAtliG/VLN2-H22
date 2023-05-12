@@ -21,19 +21,25 @@
             <form id="payment_info" class="form form-horizontal" action="{% url 'payment_index' %}" method="post">
                 {% csrf_token %}
                 {{ form.user.as_hidden }}
+                <p>Credit Card number:</p>
                 {{ form.Card_Number.as_widget }}
-                {{ form.Exp_Date.as_widget }}
+                <p>Expiration Month:</p>
+                {{ form.Exp_Month.as_widget }}
+                <p>Expiration Year:</p>
+                {{ form.Exp_Year.as_widget }}
+                <p>cvc:</p>
                 {{ form.Cvc.as_widget }}
                 <input id="conf_payment_button" type="submit" class="btn btn-primary" value="Confirm">
             </form>
+                 <a href="{% url 'contact_index' %}">
+                    <button class ='back_button_pay' class = 'alt_interactions'>
+                        Back to the contact screen
+                    </button>
+                </a>
             </div>
         {% endblock %}
 
-    <a href="{% url 'contact_index' %}">
-    <button class = 'alt_interactions'>
-        Back to the contact screen
-    </button>
-        </a>
+
     </div>
 
 

@@ -18,7 +18,8 @@ class PaymentForm(ModelForm):
         widgets = {
             'User': widgets.NumberInput(attrs={'class': 'user_id'}),
             'Card_Number': widgets.NumberInput(attrs={'class': 'form-control'}),
-            'Exp_Date': widgets.NumberInput(attrs={'class': 'form-control'}),
+            'Exp_Month': widgets.NumberInput(attrs={'class': 'form-control'}),
+            'Exp_Year': widgets.NumberInput(attrs={'class': 'form-control'}),
             'Cvc': widgets.NumberInput(attrs={'class': 'form-control'})
         }
         #validators = {

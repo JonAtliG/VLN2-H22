@@ -525,7 +525,7 @@ body {
 }
 .payment_body{
     width: 50%;
-    height: 600px;
+    height: 300px;
     margin-top: 10px;
     background-color: #53354A;
     border-radius: 15px;
@@ -544,4 +544,9 @@ body {
     display: flex;
     flex-direction: column;
 ;
+}
+.back_button_pay{
+    width: 50%;
+    height: 5%;
+    background-color: #E84545;
 }
