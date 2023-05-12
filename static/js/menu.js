@@ -152,14 +152,18 @@ const set3For2Pizza = async (id, name) => {
     for (let i = 0; i < offer_3_for_2.length; i++) {
         if (offer_3_for_2[i] == null) {
             offer_3_for_2[i] = id;
-            let pizzaElement = document.getElementById(pizzaElementIds[i])
-            pizzaElement.textContent = name.toString();
-            pizzaElement.classList.add("selected");
+            let pizzaElement = document.getElementById(pizzaElementIds[i]);
+            pizzaElement.innerHTML = "";
+            let pizzaName = document.createElement("p");
+            pizzaName.textContent = name;
+            pizzaName.classList.add("selected_pizza");
+            pizzaElement.appendChild(pizzaName);
             break;
         }
     }
     if (!(offer_3_for_2[2] === null)) {
-        let button = document.getElementById("save_offer_button");
+        let button = document.getElementById("save_offer_button_inactive");
+        button.id = "save_offer_button_active"
         button.href = "/cart/"+offer_3_for_2[0].toString()+"/"+offer_3_for_2[1].toString()+"/"+offer_3_for_2[2].toString();
     }
 }

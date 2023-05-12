@@ -123,14 +123,40 @@ body {
     text-decoration: none;
     color: white;
 }
-.menu_link2 {
-    background-color: #53354A;
-    border-radius: 10px;
+
+.selected_pizza {
+    background-color: #6bff9a;
     font-family: "Inter";
-    font-size: 42px ;
+    font-size: 20px ;
+    border-radius: 10px;
     text-decoration: none;
     color: white;
+    padding: 10px;
 }
+
+#save_offer_button_inactive {
+    border-radius: 15px;
+    padding: 1rem;
+    background-color: #53354A;
+}
+
+#save_offer_button_inactive:hover{
+    background-color: brown;
+    transition: all 0.2s ease;
+}
+
+#save_offer_button_active {
+    border-radius: 15px;
+    padding: 1rem;
+    background-color: #53354A;
+}
+
+#save_offer_button_active:hover{
+    background-color: #6bff9a;
+    transition: all 0.2s ease;
+}
+
+
 .menu_list {
     display: flex;
     flex-direction: row;
@@ -268,9 +294,8 @@ body {
 #addToCart img{
     width: 20px;
     height: 20px;
-    float: bottom;
-
 }
+
 .backnav {
     margin-left: 50%;
 }
@@ -555,7 +580,7 @@ body {
 
 .Cart_body{
     background-color: #53354A;
-    width: 60%;
+    width: 70%;
     height: 500px;
     margin-right: auto;
     margin-left: auto;
@@ -565,6 +590,13 @@ body {
 
 .Cart_body>h1{
     margin-left: 40%;
+}
+
+.cart_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0.2rem;
 }
 
 #cart_confirm{

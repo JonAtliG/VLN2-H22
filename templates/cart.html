@@ -3,6 +3,19 @@
 {% block content %}
     <div class='Cart_body'>
             <h1>Your Cart</h1>
+            {% for item in data %}
+                <div class="cart_item">
+                    <p class="cart_name">
+                        {{ item.name }}
+                    </p>
+                    <p class="cart_desc">
+                        {{ item.desc }}
+                    </p>
+                    <p class="cart_price">
+                        {{ item.price }}
+                    </p>
+                </div>
+            {% endfor %}
             <a href="{% url 'contact_index' %}">
             <button id="cart_confirm" class="btn-primary" onclick="">Confirm</button>
             </a>
