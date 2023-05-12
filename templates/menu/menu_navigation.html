@@ -1,21 +1,24 @@
 <nav class = "menunav">
     <ul class="menu_groups">
         <li class="menu_groups">
-            <li class = "menu_group">
-                <a href="{% url 'pizza-menu-index' %}" class ="menu_link">Pizzas</a>
+            <li id="search_menu" class = "menu_group">
+                <input id="search_menu_input" type="text" placeholder="search.." onkeyup="updateMenu()">
             </li>
-            <li class = "menu_group">
-                <a href="{% url 'saved-menu-index' %}" class ="menu_link">Saved Pizzas</a>
+            <li id="drink_menu_group" class = "menu_group" onclick="setFilter('pizzas')">
+                <p class="menu_link">Pizzas</p>
             </li>
-            <li class = "menu_group">
-                <a href="{% url 'side-menu-index' %}" class ="menu_link2">Sewer Sides</a>
+            <li id="drink_menu_group" class = "menu_group" onclick="setFilter('user_pizzas')">
+                <p class="menu_link">Saved Pizzas</p>
+            </li>
+            <li id="drink_menu_group" class = "menu_group" onclick="setFilter('sides')">
+                <p class="menu_link">Sewer Sides</p>
             </li>
             
-            <li class = "menu_group">
-                <a href="{% url 'drink-menu-index' %}" class ="menu_link2">Drinks</a>
+            <li id="drink_menu_group" class = "menu_group" onclick="setFilter('drinks')">
+                <p class="menu_link">Drinks</p>
             </li>
             <li class = "menu_group">
-                <a href="{% url 'create-pizza-index' %}" class ="menu_link">Create a custom pizza</a>
+                <a href="{% url 'create-pizza-index' %}" class ="menu_link">Create a pizza</a>
             </li>
         </li>
     </ul>

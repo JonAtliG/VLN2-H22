@@ -1,4 +1,5 @@
 let menuData = null;
+let activeMap = {"pizzas": true, "sides": true, "drinks": true, "user_pizzas": true}
 
 window.onload = function () {
     let jsonElement = document.getElementById("jsonData");
@@ -31,8 +32,8 @@ function getProductElement (productObject) {
     product_name.id = "menuName";
     product_name.textContent = productObject.name;
     let product_img = document.createElement("img");
-    if (productObject.img === undefined) {
-        product_img.src = '/static/img/pizza%20log.png';
+    if (productObject.img.length<1) {
+        product_img.src = 'static/img/pizza logo.png';
     } else {
         product_img.src = productObject.img;
     }
@@ -87,9 +88,12 @@ const updateMenu = async () => {
         },
     ]
     let menuContainer = document.getElementById("menu_container");
+    menuContainer.innerHTML = '';
+    let search_filter = document.getElementById("search_menu_input").value;
+
     // Using the list to set the order of action
     menuInfo.forEach(menuType => {
-        if (menuData[menuType.key].length > 0) {
+        if (menuData[menuType.key].length > 0 && activeMap[menuType.key]) {
             let menuTypeContainer = document.createElement("div");
             let titleContainer = document.createElement("div");
             let title = document.createElement("h1");
@@ -99,7 +103,13 @@ const updateMenu = async () => {
             title.textContent = menuType.title;
             menuList.classList.add("menu_list");
             menuData[menuType.key].forEach(product => {
-                menuList.appendChild(getProductElement(product));
+                if (search_filter.length > 0) {
+                    if (product.name.toLowerCase().startsWith(search_filter.toLowerCase())) {
+                        menuList.appendChild(getProductElement(product))
+                    }
+                } else {
+                    menuList.appendChild(getProductElement(product));
+                }
             })
             titleContainer.appendChild(title);
             menuTypeContainer.appendChild(titleContainer);
@@ -108,4 +118,13 @@ const updateMenu = async () => {
             }
     })
 };
+
+const setFilter = async (key) => {
+    activeMap.pizzas = false
+    activeMap.sides = false
+    activeMap.drinks = false
+    activeMap.user_pizzas = false
+    activeMap[key] = true
+    await updateMenu();
+}
 
