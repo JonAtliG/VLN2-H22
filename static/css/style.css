@@ -558,15 +558,22 @@ body {
     background-color: #E84545;
 }
 
-.Cart{
-    width: 80%;
+.Cart_body{
     background-color: #53354A;
-    margin-left: auto;
+    width: 60%;
+    height: 500px;
     margin-right: auto;
+    margin-left: auto;
+    margin-top: 2%;
+    border-radius: 15px;
 }
 
-#cart_amount{
-    width: 25%;
-    height: 10%;
-    font-size: 15px;
+.Cart_body>h1{
+    margin-left: 40%;
+}
+
+#cart_confirm{
+    margin-left: 40%;
+    margin-top: 50%;
+    width: 15%;
 }
