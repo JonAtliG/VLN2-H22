@@ -140,8 +140,11 @@ def input_card_info(request):
         form = PaymentForm(data=request.POST)
         print(form['User'].value())
         if form.is_valid():
+            print(2)
             form.save()
             return redirect('order_confirm_index')
+        else:
+            print(form.errors)
     form = PaymentForm()
     form.set_user(request.user.id)
     print(form['User'].value())

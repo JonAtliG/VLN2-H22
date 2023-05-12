@@ -1,17 +1,17 @@
-from django.core.validators import RegexValidator
 from core.models import PaymentMethod
 from django.forms import ModelForm, widgets
-from django.core.exceptions import ValidationError
-from django.core.validators import MinLengthValidator, MaxLengthValidator
+from django import forms
+
 
 class PaymentForm(ModelForm):
+    Card_Number = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = PaymentMethod
         exclude = ['id']
         widgets = {
             'User': widgets.NumberInput(attrs={'class': 'user_id'}),
-            'Card_Number': widgets.NumberInput(attrs={'class': 'form-control'}),
+            #'Card_Number': widgets.NumberInput(attrs={'class': 'form-control'}),
             'Exp_Month': widgets.NumberInput(attrs={'class': 'form-control'}),
             'Exp_Year': widgets.NumberInput(attrs={'class': 'form-control'}),
             'Cvc': widgets.NumberInput(attrs={'class': 'form-control'})
@@ -24,17 +24,14 @@ class PaymentForm(ModelForm):
         card_number = cleaned_data.get('Card_Number')
         cvc = cleaned_data.get('Cvc')
 
-        # Check exp_month and exp_year are both 2 digits
         if exp_month is not None and (exp_month < 1 or exp_month > 12):
-            self.add_error('Exp_Month', 'Invalid month. It must be between 1 and 12.')
-        if exp_year is not None and (exp_year < 0 or exp_year > 99):
-            self.add_error('Exp_Year', 'Invalid year. It must be a two-digit number.')
-        # Check credit card number is between 13-16 digits
+            self.add_error('Exp_Month', 'Invalid month, has to be between 01 and 12.')
+        if exp_year is not None and (exp_year < 23 or exp_year > 99):
+            self.add_error('Exp_Year', 'Invalid year. Input as two digits and not before year 23')
         if card_number is not None and (len(str(card_number)) < 13 or len(str(card_number)) > 16):
-            self.add_error('Card_Number', 'Invalid card number. It must be between 13 and 16 digits long.')
-        # Check cvc is only 3 digits
+            self.add_error('Card_Number', 'Invalid card number, has to be between 13-16 digits.')
         if cvc is not None and len(str(cvc)) != 3:
-            self.add_error('Cvc', 'Invalid CVC. It must be a 3 digits long.')
+            self.add_error('Cvc', 'Invalid CVC, has must be a 3 digits long.')
         return cleaned_data
 
     def set_user(self, user_id):

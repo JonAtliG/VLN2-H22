@@ -24,9 +24,9 @@
                 {{ form.user.as_hidden }}
                 <p>Credit Card number:</p>
                 {{ form.Card_Number.as_widget }}
-                <p>Expiration Month:</p>
+                <p>Expiration Month [01-12]:</p>
                 {{ form.Exp_Month.as_widget }}
-                <p>Expiration Year:</p>
+                <p>Expiration Year [23-99]:</p>
                 {{ form.Exp_Year.as_widget }}
                 <p>cvc:</p>
                 {{ form.Cvc.as_widget }}
@@ -39,11 +39,6 @@
                 </a>
             </div>
         {% endblock %}
-
-
     </div>
-
-
-
 </body>
 </html>
