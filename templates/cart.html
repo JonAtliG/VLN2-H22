@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class = 'Cart'>
-        <p id='Cart_text'>Your Cart</p>
-        <a href="{% url 'contact_index' %}">
-        <button class="btn-primary" onclick=""></button>
-        </a>
+    <div class='Cart'>
+            <h1>Your Cart</h1>
+            <a href="{% url 'contact_index' %}">
+            <button id="cart_confirm" class="btn-primary" onclick="">Confirm</button>
+            </a>
     </div>
 {% endblock %}
