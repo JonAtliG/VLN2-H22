@@ -123,14 +123,45 @@ body {
     text-decoration: none;
     color: white;
 }
-.menu_link2 {
-    background-color: #53354A;
-    border-radius: 10px;
+
+.menu_link:hover {
+    background-color: brown;
+    transition: all 0.2s ease;
+}
+
+.selected_pizza {
+    background-color: #6bff9a;
     font-family: "Inter";
-    font-size: 42px ;
+    font-size: 20px ;
+    border-radius: 10px;
     text-decoration: none;
     color: white;
+    padding: 10px;
 }
+
+#save_offer_button_inactive {
+    border-radius: 15px;
+    padding: 1rem;
+    background-color: #53354A;
+}
+
+#save_offer_button_inactive:hover{
+    background-color: brown;
+    transition: all 0.2s ease;
+}
+
+#save_offer_button_active {
+    border-radius: 15px;
+    padding: 1rem;
+    background-color: #53354A;
+}
+
+#save_offer_button_active:hover{
+    background-color: #6bff9a;
+    transition: all 0.2s ease;
+}
+
+
 .menu_list {
     display: flex;
     flex-direction: row;
@@ -268,9 +299,8 @@ body {
 #addToCart img{
     width: 20px;
     height: 20px;
-    float: bottom;
-
 }
+
 .backnav {
     margin-left: 50%;
 }
@@ -477,16 +507,19 @@ body {
     margin: 1rem;
     padding: 20px;
     justify-content: space-between;
+    border-radius: 1rem;
 }
 
 .topping_box>input{
-    width: 100px;
-    height: 100px;
+    width: 3rem;
+    height: 3rem;
 }
 
 #pizza_form {
     background-color: #53354A;
     margin: 10%;
+    padding: 1rem;
+    border-radius: 1rem;
 }
 
 #meat_selection_container{
@@ -499,6 +532,10 @@ body {
 
 #cheese_selection_container{
     background-color: yellow;
+}
+
+#sauce_selection_container{
+    background-color: red;
 }
 
 #edit_profile_form{
@@ -553,23 +590,68 @@ body {
     background-color: #E84545;
 }
 
+.cart_title {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1rem;
+}
+
+.cart_title>h1{
+    background-color: #53354A;
+    border-radius: 15px;
+    padding: 0.5rem;
+}
+
 .Cart_body{
     background-color: #53354A;
-    width: 60%;
-    height: 500px;
+    width: 80%;
     margin-right: auto;
     margin-left: auto;
     margin-top: 2%;
     border-radius: 15px;
+    padding: 1rem;
 }
 
-.Cart_body>h1{
-    margin-left: 40%;
+.cart_items_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top-style: double;
+    padding-top: 1rem;
+    border-bottom-style: double;
+    padding-bottom: 1rem;
+    margin: 1rem;
+}
+
+.cart_name_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart_desc_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart_price_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart_item_price {
+    display: flex;
+    justify-content: right;
+    border-left-style: dashed;
+    border-left-color: #2b2e4a;
+    border-left-width: 4px;
+}
+
+.checkout_button {
+    display: flex;
+    justify-content: space-around;
 }
 
 #cart_confirm{
-    margin-left: 40%;
-    margin-top: 50%;
     width: 15%;
 }
 
