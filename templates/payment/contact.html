@@ -16,14 +16,14 @@
     <img class='cartprogress' src="{% static "/img/progress1.png" %}" >
 
     <div class = 'contacts_body'>
-    <a href="{% url 'payment_index' %}">
-    <button class = 'savedcontact'>
+        <a href="{% url 'payment_index' %}">
+        <button class = 'savedcontact'>
         <p class = "contactname"> {{ user.user.first_name }} {{ user.user.last_name }} </p>
         <p class = "contactinfo"> {{ user.user.Phone_Number }} </p>
         <p class = "contactinfo"> {{ user.user.Street_Name }} {{ user.user.House_Number }} </p>
         <p class = "contactinfo"> {{ user.user.City }} </p>
         <p class = "contactinfo"> {{ user.user.Country }} </p>
-    </button>
+        </button>
     </a>
 
     <a href="{% url 'profile-index' %}">
