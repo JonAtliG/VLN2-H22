@@ -1,98 +1,91 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% block content %}
+<div class="home_photos_container">
+    <img src="{% static '/img/HomePhoto1.png' %}">
+    <img src="{% static '/img/HomePhoto3.jpg' %}">
+    <img src="{% static '/img/HomePhoto2.png' %}">
+    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sewer Pizza</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-</head>
-<body>
-    {% include 'navigation.html' %}
-    <div class="home_photos_container">
-        <img src="{% static '/img/HomePhoto1.png' %}">
-        <img src="{% static '/img/HomePhoto3.jpg' %}">
-        <img src="{% static '/img/HomePhoto2.png' %}">
+    <div class="home_menu">
+        <div class="home_menu_container">
+            <div class="title">
+            <h1>Popular Menu Items</h1>
+            </div>
+            <ul class="menu_list">
+
+                <li class="menuitem">
+                    <p id="menuName">Seweroni Pizza</p>
+                    <img src="{% static '/img/SeweroniPizza.png' %}">
+                    <p id="itemDescription">Pepperoni, Cheese, Pizza Sauce</p>
+                    <a href="{% url 'menu-index' %}" id="addToCart">
+                        <img src="{% static '/img/CartPhoto.png' %}">
+                    </a>
+                    <p id="price">17.99$</p>
+                </li>
+
+                <li class="menuitem">
+                    <p id="menuName">Hawaian Sewer</p>
+                    <img src="{% static '/img/Hawaian Sewer.png' %}">
+                    <p id="itemDescription">Ham, Pineapple, Bacon, Cheese, Pizza Sauce</p>
+                    <a href="{% url 'menu-index' %}" id="addToCart">
+                        <img src="{% static '/img/CartPhoto.png' %}">
+                    </a>
+                    <p id="price">17.99$</p>
+                </li>
+
+                <li class="menuitem">
+                    <p id="menuName">Sewer Sticks</p>
+                    <img src="{% static '/img/SewerSticks.png' %}">
+                    <p id="itemDescription">Sewer sticks poured in our legendary sewery oil</p>
+                    <a href="{% url 'menu-index' %}" id="addToCart">
+                        <img src="{% static '/img/CartPhoto.png' %}">
+                    </a>
+                    <p id="price">6.99$</p>
+                </li>
+
+                <li class="menuitem">
+                    <p id="menuName">Sewer Cheesy Sticks</p>
+                    <img src="{% static '/img/SewerCheesySticks.png' %}">
+                    <p id="itemDescription">Sewer sticks with delicious cheese  in the middle  poured with our legendary sewery oil.</p>
+                    <a href="{% url 'menu-index' %}" id="addToCart">
+                        <img src="{% static '/img/CartPhoto.png' %}">
+                    </a>
+                    <p id="price">8.99$</p>
+                </li>
+
+                <li class="menuitem">
+                    <p id="menuName">Sewer Pizza with two Toppings</p>
+                    <img src="{% static '/img/SewerPizza2Toppings.png' %}">
+                    <p id="itemDescription">One Sewer Pizza with two Toppings of your choice</p>
+                    <button id="addToCart">
+                        <img src="{% static '/img/CartPhoto.png' %}">
+                    </button>
+                    <p id="price">12.99$</p>
+                </li>
+
+                <li class="menuitem">
+                    <p id="menuName">Family Offer</p>
+                    <img src="{% static '/img/FamilyOffer.png' %}">
+                    <p id="itemDescription">Three Sewer Pizzas
+                        Two Sewer Sides
+                        Two 2L bottles of Soda
+                    </p>
+                    <a href="{% url 'menu-index' %}" id="addToCart">
+                        <img src="{% static '/img/CartPhoto.png' %}">
+                    </a>
+                    <p id="price">59.99$</p>
+                </li>
+                <li class="menuitem">
+                    <p id="menuName">Shroomy Sewage Magic Sewshrooms</p>
+                    <img src="{% static '/img/ShroomySewage.png' %}">
+                    <p id="itemDescription">Mushrooms, Chicken, Pepper Cheese, Yellow Cheese, Pizza sauce</p>
+                    <a href="{% url 'menu-index' %}" id="addToCart">
+                        <img src="{% static '/img/CartPhoto.png' %}">
+                    </a>
+                    <p id="price">19.99$</p>
+                </li>
+            </ul>
         </div>
-    
-        <div class="home_menu">
-            <div class="home_menu_container">
-                <div class="title">
-                <h1>Popular Menu Items</h1>
-                </div>
-                <ul class="menu_list">
-    
-                    <li class="menuitem">
-                        <p id="menuName">Seweroni Pizza</p>
-                        <img src="{% static '/img/SeweroniPizza.png' %}">
-                        <p id="itemDescription">Pepperoni, Cheese, Pizza Sauce</p>
-                        <a href="{% url 'menu-index' %}" id="addToCart">
-                            <img src="{% static '/img/CartPhoto.png' %}">
-                        </a>
-                        <p id="price">17.99$</p>
-                    </li>
-    
-                    <li class="menuitem">
-                        <p id="menuName">Hawaian Sewer</p>
-                        <img src="{% static '/img/Hawaian Sewer.png' %}">
-                        <p id="itemDescription">Ham, Pineapple, Bacon, Cheese, Pizza Sauce</p>
-                        <a href="{% url 'menu-index' %}" id="addToCart">
-                            <img src="{% static '/img/CartPhoto.png' %}">
-                        </a>
-                        <p id="price">17.99$</p>
-                    </li>
-    
-                    <li class="menuitem">
-                        <p id="menuName">Sewer Sticks</p>
-                        <img src="{% static '/img/SewerSticks.png' %}">
-                        <p id="itemDescription">Sewer sticks poured in our legendary sewery oil</p>
-                        <a href="{% url 'menu-index' %}" id="addToCart">
-                            <img src="{% static '/img/CartPhoto.png' %}">
-                        </a>
-                        <p id="price">6.99$</p>
-                    </li>
-    
-                    <li class="menuitem">
-                        <p id="menuName">Sewer Cheesy Sticks</p>
-                        <img src="{% static '/img/SewerCheesySticks.png' %}">
-                        <p id="itemDescription">Sewer sticks with delicious cheese  in the middle  poured with our legendary sewery oil.</p>
-                        <a href="{% url 'menu-index' %}" id="addToCart">
-                            <img src="{% static '/img/CartPhoto.png' %}">
-                        </a>
-                        <p id="price">8.99$</p>
-                    </li>
-    
-                    <li class="menuitem">
-                        <p id="menuName">Sewer Pizza with two Toppings</p>
-                        <img src="{% static '/img/SewerPizza2Toppings.png' %}">
-                        <p id="itemDescription">One Sewer Pizza with two Toppings of your choice</p>
-                        <button id="addToCart">
-                            <img src="{% static '/img/CartPhoto.png' %}">
-                        </button>
-                        <p id="price">12.99$</p>
-                    </li>
-    
-                    <li class="menuitem">
-                        <p id="menuName">Family Offer</p>
-                        <img src="{% static '/img/FamilyOffer.png' %}">
-                        <p id="itemDescription">Three Sewer Pizzas
-                            Two Sewer Sides
-                            Two 2L bottles of Soda
-                        </p>
-                        <a href="{% url 'menu-index' %}" id="addToCart">
-                            <img src="{% static '/img/CartPhoto.png' %}">
-                        </a>
-                        <p id="price">59.99$</p>
-                    </li>
-                    <li class="menuitem">
-                        <p id="menuName">Shroomy Sewage Magic Sewshrooms</p>
-                        <img src="{% static '/img/ShroomySewage.png' %}">
-                        <p id="itemDescription">Mushrooms, Chicken, Pepper Cheese, Yellow Cheese, Pizza sauce</p>
-                        <a href="{% url 'menu-index' %}" id="addToCart">
-                            <img src="{% static '/img/CartPhoto.png' %}">
-                        </a>
-                        <p id="price">19.99$</p>
-</body>
-</html>
+    </div>
+{% endblock %}
