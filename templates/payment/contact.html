@@ -17,27 +17,28 @@
 
     <div class = 'contacts_body'>
         <h1 id="cartform">Contact Information</h1>
+        <p id="cartpageinfo">Click on the contact information to confirm or edit</p>
         <a href="{% url 'payment_index' %}">
-        <button class = 'savedcontact'>
+        <button class="savedcontact" onclick="">
         <p class = "contactname"> {{ user.user.first_name }} {{ user.user.last_name }} </p>
         <p class = "contactinfo"> {{ user.user.Phone_Number }} </p>
         <p class = "contactinfo"> {{ user.user.Street_Name }} {{ user.user.House_Number }} </p>
         <p class = "contactinfo"> {{ user.user.City }} </p>
         <p class = "contactinfo"> {{ user.user.Country }} </p>
         </button>
-    </a>
-
-    <a href="{% url 'profile-index' %}">
-    <button class = 'alt_interactions'>
-        Edit Address
-    </button>
         </a>
 
-        <a href="{% url 'cart-index' %}">
-    <button class = 'alt_interactions'>
-        Back to the cart
-    </button>
-        </a>
+        <a href="{% url 'profile-index' %}">
+        <button class = 'alt_interactions'>
+            Edit Address
+        </button>
+            </a>
+
+            <a href="{% url 'cart-index' %}">
+        <button class = 'alt_interactions_2'>
+            Back to the cart
+        </button>
+            </a>
 
     </div>
 

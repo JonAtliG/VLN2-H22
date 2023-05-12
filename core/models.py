@@ -18,7 +18,8 @@ class User(BaseUserClass):
 class PaymentMethod(models.Model):
     User = models.ForeignKey(BaseUserClass, on_delete=models.CASCADE)
     Card_Number = models.IntegerField()
-    Exp_Date = models.IntegerField()
+    Exp_Month = models.IntegerField()
+    Exp_Year = models.IntegerField()
     Cvc = models.IntegerField()
 
 
