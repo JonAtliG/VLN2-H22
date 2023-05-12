@@ -35,6 +35,15 @@
                 </div>
             {% endfor %}
         </div>
+        <div class="topping_selection_container" id="sauce_selection_container">
+            {% for field in form.sauce %}
+                <div class="topping_box">
+                    <label for="{{ field.auto_id }}"></label>
+                    {{ field.as_widget }}
+                    <p>{{ field.name }}</p>
+                </div>
+            {% endfor %}
+        </div>
         <input type="submit" value="Create" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0" />
     </form>
 {% endblock %}

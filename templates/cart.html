@@ -1,23 +1,35 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+    <div class="cart_title">
+        <h1>Your Cart</h1>
+    </div>
     <div class='Cart_body'>
-            <h1>Your Cart</h1>
-            {% for item in data %}
-                <div class="cart_item">
-                    <p class="cart_name">
+        <div class="cart_items_container">
+            <div class="cart_name_container">
+                {% for item in data %}
+                    <p class="cart_item_name">
                         {{ item.name }}
                     </p>
-                    <p class="cart_desc">
-                        {{ item.desc }}
+                {% endfor %}
+            </div>
+            <div class="cart_desc_container">
+                {% for item in data %}
+                    <p class="cart_item_desc">
+                        {{ item.desc}}
                     </p>
-                    <p class="cart_price">
-                        {{ item.price }}
+                {% endfor %}
+            </div>
+            <div class="cart_price_container">
+                {% for item in data %}
+                    <p class="cart_item_desc">
+                        $ {{ item.price }}
                     </p>
-                </div>
-            {% endfor %}
-            <a href="{% url 'contact_index' %}">
-            <button id="cart_confirm" class="btn-primary" onclick="">Confirm</button>
-            </a>
+                {% endfor %}
+            </div>
+        </div>
+        <a class="checkout_button" href="{% url 'contact_index' %}">
+            <button id="cart_confirm" class="btn-primary" onclick="">Checkout</button>
+        </a>
     </div>
 {% endblock %}
