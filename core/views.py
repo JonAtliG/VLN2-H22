@@ -170,7 +170,7 @@ def menu_index(request):
     return render(request, 'menu/menu.html', context={'data': context_data})
 
 
-def menu_select_offer_index(request, offer_id):
+def menu_select_offer_index(request, offerid):
     if request.user.is_authenticated:
         user_pizzas = Pizza.objects.all().filter(User=request.user)
     else:
@@ -180,7 +180,7 @@ def menu_select_offer_index(request, offer_id):
                                           side_query=[],
                                           drink_query=[],
                                           user_pizza_query=user_pizzas,
-                                          offer_id=offer_id,)
+                                          offer_id=offerid,)
     return render(request, 'menu/3_for_2_menu.html', context={'data': context_data})
 
 

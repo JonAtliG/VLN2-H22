@@ -40,11 +40,7 @@ function getProductElement (productObject, carturl) {
     }
     let productDescription = document.createElement("p")
     productDescription.id = "itemDescription"
-    let cartButton = document.createElement("a")
-    cartButton.id = "addToCart"
-    cartButton.href = carturl+productObject.id.toString()
-    let cartImg = document.createElement("img")
-    cartImg.src = "/static/img/CartPhoto.png"
+
     let productPrice = document.createElement("p")
     productPrice.id = "price"
     //Pizzas have undefined description
@@ -54,13 +50,30 @@ function getProductElement (productObject, carturl) {
         productPrice.textContent = "$"+descriptionAndPrice.price
     } else {
         productDescription.textContent = productObject.desc;
-        productPrice.textContent = "$"+productObject.price.toString()
+        productPrice.textContent = "$" + productObject.price.toString()
     }
-    cartButton.appendChild(cartImg);
+
     product.appendChild(product_name);
     product.appendChild(product_img);
     product.appendChild(productDescription);
-    product.appendChild(cartButton);
+
+    let cartImg = document.createElement("img")
+    cartImg.src = "/static/img/CartPhoto.png"
+    if (menuData.active_offer === 1) {
+        let cartButton = document.createElement("button")
+        console.log("lol")
+        cartButton.setAttribute("onclick", "set3For2Pizza("+productObject.id+",'"+productObject.name+"')");
+        cartButton.id = "addToCart";
+        cartButton.appendChild(cartImg);
+        product.appendChild(cartButton);
+    } else {
+        let cartButton = document.createElement("a")
+        cartButton.href = carturl+productObject.id.toString();
+        cartButton.id = "addToCart";
+        cartButton.appendChild(cartImg);
+        product.appendChild(cartButton);
+    }
+
     product.appendChild(productPrice);
     return product;
 }
@@ -134,16 +147,14 @@ const setFilter = async (key) => {
 }
 
 const set3For2Pizza = async (id, name) => {
-    let pizzaElements = [
-        document.getElementById("pizza_1"),
-        document.getElementById("pizza_2"),
-        document.getElementById("pizza_3")
-    ]
+    let pizzaElementIds = ["pizza_1", "pizza_2", "pizza_3"]
+    console.log(document.getElementById("pizza_1").textContent)
     for (let i = 0; i < offer_3_for_2.length; i++) {
         if (offer_3_for_2[i] == null) {
             offer_3_for_2[i] = id;
-            pizzaElements[i].textContent = name;
-            pizzaElements[i].classList.add("selected");
+            let pizzaElement = document.getElementById(pizzaElementIds[i])
+            pizzaElement.textContent = name.toString();
+            pizzaElement.classList.add("selected");
             break;
         }
     }
