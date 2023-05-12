@@ -330,20 +330,7 @@ body {
     color: #FFFFFF;
 }
 
-/* cart */
-.Cart{
-    margin-top: 10%;
-    margin-left: 25%;
-    margin-right: 25%;
-    width: 50%;
-    background-color: red;
-    border-radius: 15px;
 
-}
-
-#Cart_text{
-    font-size: 50px;
-}
 
 #img_test{
     margin-left: 42.5%;
@@ -569,4 +556,17 @@ body {
     width: 50%;
     height: 5%;
     background-color: #E84545;
+}
+
+.Cart{
+    width: 80%;
+    background-color: #53354A;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#cart_amount{
+    width: 25%;
+    height: 10%;
+    font-size: 15px;
 }
