@@ -195,6 +195,7 @@ body {
 
 
 .cartprogress {
+    margin-top: 5%;
     width: 80%;
     margin-left: 10%;
 }
@@ -204,7 +205,10 @@ body {
     position: absolute;
     bottom: 12px;
 }
-
+#cartform{
+    font-size: 46px;
+    text-align: center;
+}
 .contacts_body {
     font-family: arial;
     font-size: 240px;
