@@ -15,11 +15,7 @@
         <img id='order_confirm' src="{% static "/img/ConfirmOrder.png" %}" >
         <p id="order_confirmed">Order Confirmed</p>
         <p id="order_confirmed">Estimated Time: 15 minutes</p>
-        <h2>Receipt</h2>
-        <div class="receipt_body">
-            <p>{{ user.user.first_name}} {{user.user.last_name}}</p>
-            <p>{{ user.user.Street_Name}} {{user.user.House_Number}}</p>
-        </div>
+        <h2 id="order_message">Thank you for choosing Sewer Pizza</h2>
         <a href="{% url 'home-index' %}">
         <button class='back_home_button'>
             Back to the home screen

@@ -614,6 +614,10 @@ body {
     background-color: #53354A;
     border-radius: 15px;
 }
+#order_message{
+    margin-left: 30%;
+    color: white;
+}
 
 #order_confirm{
     width: 20%;
@@ -622,6 +626,8 @@ body {
 
 .back_home_button{
     width: 20%;
+    height: 10%;
     margin-left: 40%;
+    margin-top: 10%;
     background-color: #E84545;
 }
