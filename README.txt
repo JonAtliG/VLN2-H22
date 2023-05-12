@@ -34,6 +34,7 @@ Required imports:
 Django
 dbview
 
-Programming Rules:
+Notes:
+to change the profile pic a internet url needs to input.
 
 
